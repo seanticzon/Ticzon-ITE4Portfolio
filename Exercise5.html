@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold mb-8">Exercise 5 - BERT-based QnA System</h1>
+            
+            <!-- Grade Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4">Grade</h2>
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl font-bold text-indigo-600">90</span>
+                    <span class="text-gray-600">/</span>
+                    <span class="text-gray-600">100</span>
+                </div>
+            </div>
+
+            <!-- File Viewers -->
+            <div class="grid grid-cols-1 gap-8 mb-8">
+                <!-- Documentation File -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Documentation</h3>
+                        <div class="mb-4">
+                            <iframe 
+                                src="https://docs.google.com/document/d/1-ykxazTc2CZUTsRl09gpKJL_QHpbAiVI/preview" 
+                                class="w-full h-[600px] border rounded-lg"
+                                title="Documentation Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-600 mb-4">Exercise documentation and analysis.</p>
+                        <a href="https://docs.google.com/document/d/1-ykxazTc2CZUTsRl09gpKJL_QHpbAiVI/edit?usp=sharing&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           target="_blank">
+                            View Document
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Excel File -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Data Analysis</h3>
+                        <div class="mb-4">
+                            <iframe 
+                                src="https://docs.google.com/spreadsheets/d/1ngU2PjiL7th2DsjrlweoPvBbdWUhTXta/preview" 
+                                class="w-full h-[600px] border rounded-lg"
+                                title="Spreadsheet Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-600 mb-4">Data analysis and calculations.</p>
+                        <a href="https://docs.google.com/spreadsheets/d/1ngU2PjiL7th2DsjrlweoPvBbdWUhTXta/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           target="_blank">
+                            View Spreadsheet
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Jupyter Notebook -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Implementation Notebook</h3>
+                        <div class="mb-4">
+                            <img 
+                                src="Midterms/Exercise5/Exercise5.png" 
+                                alt="Notebook Preview"
+                                class="w-full rounded-lg shadow-md">
+                        </div>
+                        <p class="text-gray-600 mb-4">Implementation and code for Exercise 5.</p>
+                        <a href="https://colab.research.google.com/drive/12uoEGT7ICzAHk-4cpZLj68QUU_F6cr9P" 
+                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           target="_blank">
+                            View Notebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reflection Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-600">
+                    <p class="mb-4">
+                        This exercise provided comprehensive practice in implementing and analyzing NLP concepts.
+                    </p>
+                    <p class="mb-4">
+                        Key takeaways from this exercise include:
+                    </p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Data analysis and interpretation</li>
+                        <li>Documentation practices</li>
+                        <li>Implementation techniques</li>
+                        <li>Problem-solving strategies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Instructor Comments Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Peer Review Comments</h2>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <p class="text-gray-600 mb-2">The paper is full of knowledgeable insight and the paper clearly outlines its objective, to evaluate the performance of various BERT-based models on a question-answering (QnA) task. The methodology is thorough, providing detailed steps on how each model is set up using Hugging Face. There is a well-structured explanation of tokenization, pre-processing, and the creation of a question-answering pipeline, which demonstrates the author’s clear understanding of the technical process. 
+
+
+
+                            The results section effectively highlights the performance of each model across varying difficulty levels, and also the color coding really helps to understand the performance. The paper succeeds in its objective to compare the performance of multiple BERT-based models on a QnA task. The methodology and results are clear, and the paper offers valuable insights into the relative performance of each model.</p>
+                        <span class="text-sm text-gray-500">Date: Oct 21 at 11:07pm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <p class="text-gray-600 mb-2">The aim of this paper is to assess BERT and its variants in the context of question answering, and the exemplary results of experimentations and their real-world applications give ample proof of that. Nevertheless, there is the following remark as to the methodology: While the descriptions of data sets should be laconic, they might provide more explanations. Besides, it is also further improved with a more extensive analysis by comparing BERT with other models that are not BERT-based.</p>
+                        <span class="text-sm text-gray-500">Date: Oct 21 at 11:10pm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <p class="text-gray-600 mb-2">Mr. Ticzon's paper provides a comprehensive overview of using BERT-based models for question answering tasks. The paper effectively outlines the methodology, including data preparation, model selection, and evaluation. The paper's strengths lie in its clear explanation of the concepts and the practical implementation using the Hugging Face library. The step-by-step guide and code snippets make it easier for readers to replicate the experiments.
+
+                            However, there are some areas where the paper could be improved:
+                            
+                            Evaluation Metrics: While the paper mentions the importance of evaluating models, it lacks a detailed discussion of specific metrics used to assess the performance of the models. Metrics like accuracy, precision, recall, and F1-score could be used to quantify the models' performance.
+                            
+                            Comparison of Models: A more in-depth comparison of the performance of different BERT variants (BERT, RoBERTa, DistilBERT) would be beneficial. Analyzing the trade-offs between model size, performance, and computational cost could provide valuable insights.
+                            
+                            Data Quality and Quantity: Discussing the impact of data quality and quantity on the performance of the models could add value to the paper. High-quality and diverse datasets are crucial for training effective language models.
+                            
+                            Model Limitations and Future Directions: Acknowledging the limitations of BERT-based models, such as their reliance on large amounts of data and computational resources, would be helpful. Additionally, exploring potential future directions, such as fine-tuning models on specific domains or incorporating knowledge graphs, could be discussed.
+                            
+                            Overall, Mr. Ticzon's paper provides a solid foundation for understanding and implementing BERT-based question answering systems. By addressing the suggested improvements, the paper can be further enhanced to provide a more comprehensive and insightful analysis.
+                            
+                            
+                            
+                            And by viewing his excel file, i like how he put some colors in it so the reader will definitely know what is going on. He also discussed every model that he used in the entire work.</p>
+                        <span class="text-sm text-gray-500">Date: Oct 28 at 8:25pm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -12,9 +12,108 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animated Background Gradient */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Enhanced Card Hover Effects */
+        .hover-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .hover-card i {
+            transition: all 0.3s ease;
+        }
+
+        .hover-card:hover i {
+            transform: scale(1.2);
+            color: #4f46e5;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Custom animation for cards */
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hover-card {
+            animation: floatIn 0.6s ease-out forwards;
+        }
+
+        .hover-card:nth-child(1) { animation-delay: 0.1s; }
+        .hover-card:nth-child(2) { animation-delay: 0.2s; }
+        .hover-card:nth-child(3) { animation-delay: 0.3s; }
+        .hover-card:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- Loading Animation -->
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
         <div class="container mx-auto px-6 py-4">
@@ -23,7 +122,7 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
                     <a href="about.html" class="text-indigo-600">About</a>
-                    <a href="index.html#projects" class="text-gray-700 hover:text-indigo-600 transition">Projects</a>
+                    <a href="index.html#projects" class="text-gray-700 hover:text-indigo-600 transition">Portfolio</a>
                     <a href="index.html#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
                 </div>
             </div>
@@ -32,9 +131,17 @@
 
     <!-- Main Content -->
     <div class="pt-20">
-        <!-- Profile Section -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
+        <!-- Profile Section with Background -->
+        <section class="py-20 relative">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="images/innerhero.jpg" alt="Background" class="w-full h-full object-cover">
+                <!-- Light overlay for better content visibility -->
+                <div class="absolute inset-0 bg-white/90"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="max-w-4xl mx-auto">
                     <div class="flex flex-col md:flex-row items-center gap-12" data-aos="fade-up">
                         <!-- Profile Image -->
@@ -117,6 +224,15 @@
                                 </div>
                                 <div>
                                     <div class="flex justify-between mb-1">
+                                        <span class="text-gray-700">SQL</span>
+                                        <span class="text-gray-600">80%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
                                         <span class="text-gray-700">JAVA</span>
                                         <span class="text-gray-600">75%</span>
                                     </div>
@@ -147,26 +263,95 @@
             <div class="container mx-auto px-6">
                 <div class="max-w-3xl mx-auto" data-aos="fade-up">
                     <h2 class="text-3xl font-bold mb-8 gradient-text">Interests & Hobbies</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h3 class="font-semibold mb-3">Photography</h3>
-                            <p class="text-gray-600">Description of your interest in photography.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Web Development Card -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
+                            <div class="flex flex-col items-center text-center">
+                                <i class="fas fa-globe text-4xl text-indigo-600 mb-4"></i>
+                                <h3 class="font-semibold mb-3">Website Development</h3>
+                                <p class="text-gray-600">Passionate about creating responsive and user-friendly websites using modern technologies and frameworks.</p>
+                            </div>
                         </div>
-                        <!-- Add more hobby cards -->
+
+                        <!-- Coding Card -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
+                            <div class="flex flex-col items-center text-center">
+                                <i class="fas fa-code text-4xl text-indigo-600 mb-4"></i>
+                                <h3 class="font-semibold mb-3">Coding</h3>
+                                <p class="text-gray-600">Love exploring different programming languages and solving complex problems through code.</p>
+                            </div>
+                        </div>
+
+                        <!-- Gaming Card -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
+                            <div class="flex flex-col items-center text-center">
+                                <i class="fas fa-gamepad text-4xl text-indigo-600 mb-4"></i>
+                                <h3 class="font-semibold mb-3">Gaming</h3>
+                                <p class="text-gray-600">Enthusiastic gamer who enjoys both competitive and story-driven games across various platforms.</p>
+                            </div>
+                        </div>
+
+                        <!-- TCG/Yu-Gi-Oh! Card -->
+                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
+                            <div class="flex flex-col items-center text-center">
+                                <i class="fas fa-cards text-4xl text-indigo-600 mb-4"></i>
+                                <h3 class="font-semibold mb-3">Trading Card Games</h3>
+                                <p class="text-gray-600">Dedicated Yu-Gi-Oh! player and collector, enjoying the strategy and community aspects of TCGs.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Goals -->
+        <!-- Achievements -->
         <section class="py-16 bg-white">
             <div class="container mx-auto px-6">
                 <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-8 gradient-text">Professional Goals</h2>
-                    <div class="prose lg:prose-lg text-gray-600">
-                        <p class="mb-4">
-                            [Describe your short-term and long-term professional goals here.]
-                        </p>
+                    <h2 class="text-3xl font-bold mb-8 gradient-text">Achievements</h2>
+                    
+                    <!-- Trainings and Seminars -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Trainings and Seminars</h3>
+                        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-certificate text-indigo-600 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Writing Chapter 1: Strategies for Crafting Objectives</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-certificate text-indigo-600 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Best Practices in Writing Review of Related Literature</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-certificate text-indigo-600 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">Navigating the Software Development Landscape: Exploring Methodologies for Success</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Awards and Recognitions -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Awards and Recognitions</h3>
+                        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-trophy text-indigo-600 mt-1 mr-3"></i>
+                                    <div class="text-gray-600">
+                                        <span class="font-semibold">IT & EMC Skills Competition</span>
+                                        <ul class="list-disc ml-5 mt-2">
+                                            <li>Java Programming – 1st place</li>
+                                            <li>12th IT Skills Olympics Java Programming – 15th place</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-award text-indigo-600 mt-1 mr-3"></i>
+                                    <span class="text-gray-600">IT SPECIALIST - Database</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,27 +366,29 @@
                         <div class="space-y-4">
                             <div class="flex items-center gap-4">
                                 <i class="fas fa-envelope text-indigo-600"></i>
-                                <span class="text-gray-600">your.email@example.com</span>
+                                <span class="text-gray-600">seanticzon@gmail.com</span>
                             </div>
                             <div class="flex items-center gap-4">
                                 <i class="fas fa-phone text-indigo-600"></i>
-                                <span class="text-gray-600">+1 (234) 567-8900</span>
+                                <span class="text-gray-600">0915-340-1432</span>
                             </div>
                             <div class="flex items-center gap-4">
                                 <i class="fas fa-map-marker-alt text-indigo-600"></i>
-                                <span class="text-gray-600">City, Country</span>
+                                <span class="text-gray-600">Mandaluyong City, Philippines</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
     </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>© 2024 Your Name. All rights reserved.</p>
+            <p>© 2024 Sean Repti Miguel L. Ticzon. All rights reserved.</p>
         </div>
     </footer>
 
@@ -213,6 +400,46 @@
         AOS.init({
             duration: 1000,
             once: true
+        });
+    </script>
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.hover-card').forEach((el) => observer.observe(el));
+
+        // Text animation for headings
+        const animateText = (element) => {
+            const text = element.textContent;
+            element.textContent = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = text[i];
+                span.style.animationDelay = `${i * 0.1}s`;
+                span.classList.add('animate-in');
+                element.appendChild(span);
+            }
+        };
+
+        document.querySelectorAll('h1, h2').forEach(heading => {
+            animateText(heading);
         });
     </script>
 </body>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise M1.1 - Evaluating NLP Model Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-bold mb-8">Exercise M1.1 - Evaluating NLP Model Performance</h1>
+            
+            <!-- Grade Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4">Grade</h2>
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl font-bold text-indigo-600">90</span>
+                    <span class="text-gray-600">/</span>
+                    <span class="text-gray-600">100</span>
+                </div>
+            </div>
+
+            <!-- File Viewers -->
+            <div class="grid grid-cols-1 gap-8 mb-8">
+                <!-- Documentation File -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Documentation</h3>
+                        <div class="mb-4">
+                            <iframe 
+                                src="https://docs.google.com/document/d/1yCnd_jJsPLMCkhmnF-eaCl6xx0KRH18K/preview" 
+                                class="w-full h-[600px] border rounded-lg"
+                                title="Documentation Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-600 mb-4">Detailed documentation of the NLP model evaluation process.</p>
+                        <a href="https://docs.google.com/document/d/1yCnd_jJsPLMCkhmnF-eaCl6xx0KRH18K/edit?usp=sharing&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           target="_blank">
+                            View Document
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Performance Evaluation Spreadsheet -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Performance Evaluation</h3>
+                        <div class="mb-4">
+                            <iframe 
+                                src="https://docs.google.com/spreadsheets/d/1T9R3W1Ham8yVCGQ0O3lXqO5Hcb9YlI5n/preview" 
+                                class="w-full h-[600px] border rounded-lg"
+                                title="Spreadsheet Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-600 mb-4">Detailed performance metrics and evaluation results.</p>
+                        <a href="https://docs.google.com/spreadsheets/d/1T9R3W1Ham8yVCGQ0O3lXqO5Hcb9YlI5n/edit?usp=sharing&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           target="_blank">
+                            View Spreadsheet
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Jupyter Notebook -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Implementation Notebook</h3>
+                        <div class="mb-4">
+                            <img 
+                                src="Midterms/ExerciseM1.1/ExerciseM1.1.png" 
+                                alt="Notebook Preview"
+                                class="w-full rounded-lg shadow-md">
+                        </div>
+                        <p class="text-gray-600 mb-4">Implementation and code for the NLP model evaluation.</p>
+                        <a href="https://colab.research.google.com/drive/1I9kh3_hx1bz_73od4DvPkBywVwzT6Tds" 
+                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           target="_blank">
+                            View Notebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reflection Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-600">
+                    <p class="mb-4">
+                        This exercise focused on evaluating NLP model performance and understanding various metrics.
+                    </p>
+                    <p class="mb-4">
+                        Key takeaways from this exercise include:
+                    </p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li>Understanding performance metrics</li>
+                        <li>Evaluating model accuracy</li>
+                        <li>Analyzing results</li>
+                        <li>Documentation practices</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Instructor Comments Section -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Peer Review Comments</h2>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <p class="text-gray-600 mb-2">Word Document: The introduction provides a rationale for the need to assess NLP models and the authors present their framework in clear terms. The debate over the quality of datasets and the performance of the models is enlightening even though, it lacks better information on how overfitting might be seen especially in text summarization. Punctuation is good but some parts should be more brief in the writing. In general, the strengths of the analysis are evident, yet critical exploration may be needed in some sections more than in others.
+
+
+
+                            Jupyter Notebook: It also displays an organized approach in terms of different models evaluating using various datasets. Overall the code is very functional, however some more usage of comments would be highly desirable, especially when a author describes how performance is managed. It is the opposite of an impulse-driven approach; however, while it is documented well, some details are harder to understand for other people because of the missing detailed guidelines.
+                            
+                            
+                            
+                            Excel File: It follows efficient arrangement to an extent where one can easily locate contents they are looking for. The statistics of the performance of each model are elaborated in a manner that allow a direct comparison between the models. This may improve from making good use of color codes to show the best performing models. All in all, it lays a proper ground for the findings and gives a clear implicative of them.</p>
+                        <span class="text-sm text-gray-500">Date:  Oct 14 at 5:14pm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <p class="text-gray-600 mb-2">Good day, Mr. Ticzon!
+
+
+
+                            I will be commenting on each of the file you've submitted. First on your Colab notebook. I noticed that you did not explain how your code works and what it is about. Although you did a good job on your evaluation metrics for each of the model even though it has some biases in some parts, I think it would be better if you did include an explanation so that I could learn more about it from you. 
+                            
+                            
+                            
+                            Second, on your Performance Evaluation excel file. I like how it is well documented because of the color pattern making it distinct from each other and visually pleasing in my opinion. I recommend that you should include which is the lowest so that I can easily compare which is which. 
+                            
+                            
+                            
+                            Lastly, in your document file, I like how you included pictures, the format, and how detailed you explain some parts. I just noticed some inconsistencies on it because there are figures that were not explained well in detail. You can work on it next time. 
+                            
+                            
+                            
+                            Overall, you did a good job in this activity. You can improve what you lack next time like being inconsistent, explaining it all in detail, and including the comparison of the evaluation.</p>
+                        <span class="text-sm text-gray-500">Date:  Oct 18 at 7:18pm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <p class="text-gray-600 mb-2">While looking through your work, I found some concerns that should be addressed in order to enhance the performance of natural language processing models. One of the major problems is “overfitted.” This arises when a model fits the training data to the extent of remembering the answers rather than learning the pattern. Consequently, although it performs well during training, and testing and yields a 100% accuracy rate, it fails when confronted with new, actual values it has never learned about. This is like a student who prepares cram notes to use when answering a particular instructor’s questions but cannot use the same to solve other questions or even practical real-life problems.
+
+
+
+                            Another problem is the nature of the training data, where most of the data taken is of poor quality. There is the possibility of using the obtained datasets in this study not reflecting the vastness and diversification of the textual data in the real world. For example, language can be raw and messy, full of slang, typos, and a plethora of expression varieties, but if the training dataset is too neat or fairly standardized, the model may be poor in handling such variations. This may cause a situation whereby the model works well at the research level but does not produce the right results when used in real-world assessment.
+                            
+                            
+                            
+                            Moreover, one thing that works for almost all models is that the more data available the better the model will be but here too, it is important to state the quality of the data. Just getting more data without concern for relevance and quality will eventually decrease the effectiveness. If testing is not done well, it may create a good impression that the model is performing better as it is not the real case.
+                            
+                            
+                            
+                            In view of these problems, you need to use richer and more realistic samples as your training material that could approximate real-life language use. This could involve using data from social media posts, customer feedback, and other informal texts. It is also necessary to apply stricter techniques of validation to make sure that the model can apply knowledge of learning to new conditions. It will also be important to routinely expose the model to more difficult and diverse samples in order to determine the model’s reliability in practical applications. That way, there are better chances of having a more dependable and efficient natural language processing model that will work best in real-world practice.</p>
+                        <span class="text-sm text-gray-500">Date:  Oct 24 at 12:44am</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
