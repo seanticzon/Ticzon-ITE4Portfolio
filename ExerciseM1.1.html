@@ -4,52 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise M1.1 - Evaluating NLP Model Performance</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation Bar -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Back to Home</a>
-                </div>
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <a href="midterms.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    Back to Midterms
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Content Section -->
-    <section class="pt-24 pb-12">
+    <section class="pt-32 pb-20">
         <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-8">Exercise M1.1 - Evaluating NLP Model Performance</h1>
-            
-            <!-- Grade Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4">Grade</h2>
-                <div class="flex items-center space-x-2">
-                    <span class="text-3xl font-bold text-indigo-600">90</span>
-                    <span class="text-gray-600">/</span>
-                    <span class="text-gray-600">100</span>
+            <!-- Header and Grade Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient">Exercise M1.1 - Evaluating NLP Model Performance</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="glass-card p-6 rounded-xl border border-[#00F5A0]/20">
+                        <span class="text-sm text-gray-400 block mb-2">Grade Achieved</span>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-4xl font-bold text-[#00F5A0]">90</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">100</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- File Viewers -->
             <div class="grid grid-cols-1 gap-8 mb-8">
                 <!-- Documentation File -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Documentation</h3>
-                        <div class="mb-4">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Documentation</h3>
+                        <div class="mb-6">
                             <iframe 
                                 src="https://docs.google.com/document/d/1yCnd_jJsPLMCkhmnF-eaCl6xx0KRH18K/preview" 
-                                class="w-full h-[600px] border rounded-lg"
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
                                 title="Documentation Viewer">
                             </iframe>
                         </div>
-                        <p class="text-gray-600 mb-4">Detailed documentation of the NLP model evaluation process.</p>
+                        <p class="text-gray-300 mb-6">Detailed documentation of the NLP model evaluation process.</p>
                         <a href="https://docs.google.com/document/d/1yCnd_jJsPLMCkhmnF-eaCl6xx0KRH18K/edit?usp=sharing&ouid=104070299093774511275&rtpof=true&sd=true" 
-                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                            target="_blank">
                             View Document
                         </a>
@@ -57,19 +93,19 @@
                 </div>
 
                 <!-- Performance Evaluation Spreadsheet -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Performance Evaluation</h3>
-                        <div class="mb-4">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Performance Evaluation</h3>
+                        <div class="mb-6">
                             <iframe 
                                 src="https://docs.google.com/spreadsheets/d/1T9R3W1Ham8yVCGQ0O3lXqO5Hcb9YlI5n/preview" 
-                                class="w-full h-[600px] border rounded-lg"
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
                                 title="Spreadsheet Viewer">
                             </iframe>
                         </div>
-                        <p class="text-gray-600 mb-4">Detailed performance metrics and evaluation results.</p>
+                        <p class="text-gray-300 mb-6">Detailed performance metrics and evaluation results.</p>
                         <a href="https://docs.google.com/spreadsheets/d/1T9R3W1Ham8yVCGQ0O3lXqO5Hcb9YlI5n/edit?usp=sharing&ouid=104070299093774511275&rtpof=true&sd=true" 
-                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                            target="_blank">
                             View Spreadsheet
                         </a>
@@ -77,18 +113,18 @@
                 </div>
 
                 <!-- Jupyter Notebook -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Implementation Notebook</h3>
-                        <div class="mb-4">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Implementation Notebook</h3>
+                        <div class="mb-6">
                             <img 
                                 src="Midterms/ExerciseM1.1/ExerciseM1.1.png" 
                                 alt="Notebook Preview"
-                                class="w-full rounded-lg shadow-md">
+                                class="w-full rounded-xl shadow-lg">
                         </div>
-                        <p class="text-gray-600 mb-4">Implementation and code for the NLP model evaluation.</p>
+                        <p class="text-gray-300 mb-6">Implementation and code for the NLP model evaluation.</p>
                         <a href="https://colab.research.google.com/drive/1I9kh3_hx1bz_73od4DvPkBywVwzT6Tds" 
-                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                            target="_blank">
                             View Notebook
                         </a>
@@ -97,30 +133,53 @@
             </div>
 
             <!-- Reflection Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4">Personal Reflection</h2>
-                <div class="prose max-w-none text-gray-600">
-                    <p class="mb-4">
-                        This exercise focused on evaluating NLP model performance and understanding various metrics.
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-300">
+                    <p class="mb-4 text-justify">
+                        For the <span class="accent-gradient font-semibold">Evaluating the NLP Model Performance</span>, this was a long activity that involved lots of work. First, I did the Python notebook. These are the models in the Python notebook:
                     </p>
-                    <p class="mb-4">
-                        Key takeaways from this exercise include:
-                    </p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Understanding performance metrics</li>
-                        <li>Evaluating model accuracy</li>
-                        <li>Analyzing results</li>
-                        <li>Documentation practices</li>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Text Classification</span> (Email Classification Spam or Ham)</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Named Entity Recognition</span></span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Part of Speech tagging</span></span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Sentiment Analysis</span></span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Text Summarization</span></span>
+                        </li>
                     </ul>
+
+                    <p class="mb-4 text-justify">
+                        I used various <span class="accent-gradient font-semibold">datasets</span> for this to achieve better performance, and the results are good, but there are some problems within the <span class="accent-gradient font-semibold">Text Summarization</span> part, where some subsets have biased outputs. However, the rest of the models have good results.
+                    </p>
+
+                    <p class="mb-4 text-justify">
+                        I had a hard time and had fun at the same time doing this activity. <span class="accent-gradient font-semibold">Training the model</span> and seeing the results is like a surprise every time I test it.
+                    </p>
                 </div>
             </div>
 
-            <!-- Instructor Comments Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-2xl font-bold mb-4">Peer Review Comments</h2>
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">Word Document: The introduction provides a rationale for the need to assess NLP models and the authors present their framework in clear terms. The debate over the quality of datasets and the performance of the models is enlightening even though, it lacks better information on how overfitting might be seen especially in text summarization. Punctuation is good but some parts should be more brief in the writing. In general, the strengths of the analysis are evident, yet critical exploration may be needed in some sections more than in others.
+            <!-- Peer Review Comments Section -->
+            <div class="glass-card rounded-xl p-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Peer Review Comments</h2>
+                <div class="space-y-6">
+                    <!-- Comment 1 -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">Word Document: The introduction provides a rationale for the need to assess NLP models and the authors present their framework in clear terms. The debate over the quality of datasets and the performance of the models is enlightening even though, it lacks better information on how overfitting might be seen especially in text summarization. Punctuation is good but some parts should be more brief in the writing. In general, the strengths of the analysis are evident, yet critical exploration may be needed in some sections more than in others.
 
 
 
@@ -129,14 +188,11 @@
                             
                             
                             Excel File: It follows efficient arrangement to an extent where one can easily locate contents they are looking for. The statistics of the performance of each model are elaborated in a manner that allow a direct comparison between the models. This may improve from making good use of color codes to show the best performing models. All in all, it lays a proper ground for the findings and gives a clear implicative of them.</p>
-                        <span class="text-sm text-gray-500">Date:  Oct 14 at 5:14pm</span>
+                        <span class="text-sm text-gray-500">Date: Oct 14 at 5:14pm</span>
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">Good day, Mr. Ticzon!
+                    <!-- Comment 2 -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">Good day, Mr. Ticzon!
 
 
 
@@ -153,14 +209,11 @@
                             
                             
                             Overall, you did a good job in this activity. You can improve what you lack next time like being inconsistent, explaining it all in detail, and including the comparison of the evaluation.</p>
-                        <span class="text-sm text-gray-500">Date:  Oct 18 at 7:18pm</span>
+                        <span class="text-sm text-gray-500">Date: Oct 18 at 7:18pm</span>
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">While looking through your work, I found some concerns that should be addressed in order to enhance the performance of natural language processing models. One of the major problems is “overfitted.” This arises when a model fits the training data to the extent of remembering the answers rather than learning the pattern. Consequently, although it performs well during training, and testing and yields a 100% accuracy rate, it fails when confronted with new, actual values it has never learned about. This is like a student who prepares cram notes to use when answering a particular instructor’s questions but cannot use the same to solve other questions or even practical real-life problems.
+                    <!-- Comment 3 -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">While looking through your work, I found some concerns that should be addressed in order to enhance the performance of natural language processing models. One of the major problems is “overfitted.” This arises when a model fits the training data to the extent of remembering the answers rather than learning the pattern. Consequently, although it performs well during training, and testing and yields a 100% accuracy rate, it fails when confronted with new, actual values it has never learned about. This is like a student who prepares cram notes to use when answering a particular instructor’s questions but cannot use the same to solve other questions or even practical real-life problems.
 
 
 
@@ -173,11 +226,38 @@
                             
                             
                             In view of these problems, you need to use richer and more realistic samples as your training material that could approximate real-life language use. This could involve using data from social media posts, customer feedback, and other informal texts. It is also necessary to apply stricter techniques of validation to make sure that the model can apply knowledge of learning to new conditions. It will also be important to routinely expose the model to more difficult and diverse samples in order to determine the model’s reliability in practical applications. That way, there are better chances of having a more dependable and efficient natural language processing model that will work best in real-world practice.</p>
-                        <span class="text-sm text-gray-500">Date:  Oct 24 at 12:44am</span>
+                        <span class="text-sm text-gray-500">Date: Oct 24 at 12:44am</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Activity Navigation -->
+            <div class="bg-gray-900/80 backdrop-blur-md rounded-xl p-6" data-aos="fade-up">
+                <div class="flex justify-between items-center">
+                    <!-- Previous Activity -->
+                    <a href="ExerciseM1.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition-transform duration-300"></i>
+                        Previous Activity
+                    </a>
+
+                    <!-- Current Activity Indicator -->
+                    <span class="hidden md:block text-[#00F5A0]">Exercise M1.1</span>
+
+                    <!-- Next Activity -->
+                    <a href="Exercise5.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Next Activity
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midterms - Sean Ticzon</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
+    <!-- Core Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-block {
+            background: rgba(0, 245, 160, 0.1);
+            border-left: 3px solid #00F5A0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+
+        .tag-item {
+            position: relative;
+            cursor: help;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .tag-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tag-item:hover .tooltip.left {
+            transform: translateX(0) translateY(0);
+        }
+
+        .tag-item:hover .tooltip.right {
+            transform: translateX(0) translateY(0);
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            padding: 0.75rem 1rem;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: max-content;
+            max-width: 250px;
+            z-index: 50;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(17, 24, 39, 0.95) transparent transparent transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tooltip.left {
+            left: 0;
+            transform: translateX(0) translateY(10px);
+        }
+
+        .tooltip.right {
+            left: auto;
+            right: 0;
+            transform: translateX(0) translateY(10px);
+        }
+
+        .tooltip.left::before {
+            left: 20%;
+        }
+
+        .tooltip.right::before {
+            left: 80%;
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #00F5A0;
+            font-size: 0.8rem;
+            letter-spacing: 0.025em;
+        }
+
+        .tooltip-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <div class="flex gap-4">
+                    <a href="#reflection" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Reflection
+                    </a>
+                    <a href="#activities" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Activities
+                    </a>
+                    <a href="index.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Term Overview -->
+    <section class="pt-32 pb-20" id="reflection">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient" data-aos="fade-up">Midterms Journey</h1>
+            <div class="glass-card p-8 rounded-xl mb-12" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="text-2xl font-semibold mb-6">Term Reflection</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        For our Midterms we learned on how to use <span class="accent-gradient font-semibold">Spacy Library</span>, so Spacy library is a free <span class="accent-gradient font-semibold">Natural Language Processing</span> open library in python it is also designed, it is designed to make Natural Language Processing and can handle large amounts of texts for processing and understanding. Installing Spacy is easy and you only need to put this line of code:
+                    </p>
+
+                    <div class="code-block">
+                        !pip install spacy
+                    </div>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        Also there are some features presented in the Spacy are <span class="accent-gradient font-semibold">Tokenization</span>, <span class="accent-gradient font-semibold">Part-of-Speech tagging (POS)</span>, <span class="accent-gradient font-semibold">Lemmatization</span>, <span class="accent-gradient font-semibold">Named Entity Recognition (NER)</span> and a lot more in their documentation. Spacy also has some models that you can use the <span class="accent-gradient font-semibold">en_core_web_sm</span> which means small, the <span class="accent-gradient font-semibold">en_core_web_md</span> which means midium and the <span class="accent-gradient font-semibold">en_core_web_lg</span> means large, the sizes of the model varies in the performance, like for the small model it is fast and more resource efficient but is limited on the semantic understanding, for the medium size, it is more balanced and good for some general NLP tasks, and the Large size, it is more accurate and powerful and more advanced NLP tasks but it takes a lot of resoucres.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        Also in the Spacy pipeline we can also try to customize on what should we can also specify what pipelines we can only use for example:
+                    </p>
+
+                    <div class="code-block">
+                        pipeline = ["tagger", "parser", "ner"]
+                    </div>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        In the Midterms we also learned about NLP Techniques like the <span class="accent-gradient font-semibold">Named Entity Recognition</span>, which is useful for the nameing and locating of the entites in the text, this is used for categorization and segmentation for example in customer questions and quesries. Also <span class="accent-gradient font-semibold">Sentiment Analysis</span> is the is a scale positive, negative, and neutral, it is mainly used for reviews from the customer and surveys.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        I also learned how to make the performance of the models with testing the model using metrics, which are <span class="accent-gradient font-semibold">accuracy</span>, <span class="accent-gradient font-semibold">precision</span>, and <span class="accent-gradient font-semibold">recall</span>, and the <span class="accent-gradient font-semibold">F1-score</span>. The accuracy provides a straightforward approach where, in it measures the output correctly predicted out of total outputs in the dataset. The precision measures the correctly positive predictions while the recall measures how many are actual positive predictions. The F1-score is the harmonic mean of precision and recall, balancing false positives with false negatives. This allowed me to interpret these metrics more meaningfully when determining what changes the model needed to its reliability and accuracy.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed text-justify">
+                        One of the most exciting things about midterms was learning about <span class="accent-gradient font-semibold">BERT</span>, the <span class="accent-gradient font-semibold">Bidirectional Encoder Representations from Transformers</span> model. BERT has revolutionized the world of natural language processing because now models can be understood in both directions of a sentence-both ways, either left to right or right to left. This kind of bidirectional has made BERT quite effective in tasks like sentiment analysis, question answering, and text classification because it captures deeper contextual meaning from the text. I learned how it could take all the transformer-based models and transform them into giving improved accuracy and understanding nuances over language.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works and Activities -->
+    <section class="py-20 bg-gray-800" id="activities">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 accent-gradient" data-aos="fade-up">Works and Activities</h2>
+            
+            <!-- Activity Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Exercise M1 - Implementing NLP Application Models -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/nlp.png" alt="NLP Models" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="ExerciseM1.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise M1: Implementing NLP Application Models</h3>
+                        <p class="text-gray-400 mb-6">Implementation of NLP application models using Spacy, focusing on practical applications and model deployment.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Spacy
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Spacy</div>
+                                    <div class="tooltip-content">Open-source library for advanced Natural Language Processing in Python.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                NLP
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Natural Language Processing</div>
+                                    <div class="tooltip-content">Technology enabling computers to understand and process human language.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Ipynb
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Jupyter Notebook</div>
+                                    <div class="tooltip-content">Interactive computing environment for creating and sharing documents with live code.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="ExerciseM1.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exercise M1.1 - Evaluating NLP Model Performance -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/compliance.png" alt="Model Evaluation" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="ExerciseM1.1.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise M1.1: Evaluating NLP Model Performance</h3>
+                        <p class="text-gray-400 mb-6">Assessment and evaluation of NLP model performance metrics and optimization techniques.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Metrics
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Performance Metrics</div>
+                                    <div class="tooltip-content">Measurements used to evaluate the effectiveness of NLP models.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Evaluation
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Model Evaluation</div>
+                                    <div class="tooltip-content">Process of assessing model performance using various metrics and techniques.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Ipynb
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Jupyter Notebook</div>
+                                    <div class="tooltip-content">Interactive computing environment for creating and sharing documents with live code.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="ExerciseM1.1.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 - BERT-based QnA System -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/communication.png" alt="BERT QnA System" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="Exercise5.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise 5: BERT-based QnA System</h3>
+                        <p class="text-gray-400 mb-6">Development of a Question-Answering system using BERT transformers model.</p>
+                        <br>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                BERT
+                                <div class="tooltip">
+                                    <div class="tooltip-title">BERT</div>
+                                    <div class="tooltip-content">Bidirectional Encoder Representations from Transformers: Advanced language model for NLP tasks.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                QnA
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Question & Answer</div>
+                                    <div class="tooltip-content">System designed to automatically answer questions posed in natural language.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Ipynb
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Jupyter Notebook</div>
+                                    <div class="tooltip-content">Interactive computing environment for creating and sharing documents with live code.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="Exercise5.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- P-M1 Project Proposal Presentation -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/presentation.png" alt="Project Proposal" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="P-M1.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">P-M1: Project Proposal Presentation</h3>
+                        <p class="text-gray-400 mb-6">Presentation of the project proposal outlining objectives, methodology, and expected outcomes.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Presentation
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Presentation</div>
+                                    <div class="tooltip-content">Visual and verbal communication of project plans and objectives.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Proposal
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Project Proposal</div>
+                                    <div class="tooltip-content">Detailed plan outlining project goals, methodology, and expected outcomes.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Documentation
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Documentation</div>
+                                    <div class="tooltip-content">Written materials detailing project specifications and requirements.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="P-M1.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- P-M1 Revised Project Proposal -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/revised.png" alt="Revised Proposal" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="P-M1Revised.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">P-M1: Revised Project Proposal</h3>
+                        <p class="text-gray-400 mb-6">Updated project proposal incorporating feedback and refinements to the original plan.</p>
+                        <br>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Revised
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Revised Version</div>
+                                    <div class="tooltip-content">Updated proposal incorporating feedback and improvements.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Documentation
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Documentation</div>
+                                    <div class="tooltip-content">Written materials detailing project specifications and requirements.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="P-M1Revised.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/exam1.png" alt="Midterm Exam" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="P-M1Revised.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Midterm Examination</h3>
+                        <p class="text-gray-400 mb-6">Comprehensive assessment covering NLP application models, performance evaluation, and project proposal development.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Exam
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Examination</div>
+                                    <div class="tooltip-content">Comprehensive assessment of NLP concepts, models, and applications.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="MidtermExam.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <p>© 2024 Sean Repti Miguel L. Ticzon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+    <script>
+        function adjustTooltipPositions() {
+            const tooltips = document.querySelectorAll('.tooltip');
+            
+            tooltips.forEach(tooltip => {
+                const rect = tooltip.getBoundingClientRect();
+                const parentRect = tooltip.closest('.glass-card').getBoundingClientRect();
+                const tag = tooltip.closest('.tag-item');
+                const tagRect = tag.getBoundingClientRect();
+                
+                tooltip.classList.remove('left', 'right');
+                
+                const spaceToRight = parentRect.right - tagRect.right;
+                const spaceToLeft = tagRect.left - parentRect.left;
+                
+                if (spaceToRight < 100 && spaceToLeft > spaceToRight) {
+                    tooltip.classList.add('right');
+                } else if (spaceToLeft < 100 && spaceToRight > spaceToLeft) {
+                    tooltip.classList.add('left');
+                }
+                
+                const tooltipRect = tooltip.getBoundingClientRect();
+                if (tooltipRect.left < parentRect.left) {
+                    tooltip.classList.add('left');
+                } else if (tooltipRect.right > parentRect.right) {
+                    tooltip.classList.add('right');
+                }
+            });
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedAdjust = debounce(adjustTooltipPositions, 100);
+        window.addEventListener('load', adjustTooltipPositions);
+        window.addEventListener('resize', debouncedAdjust);
+
+        document.querySelectorAll('.tag-item').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                requestAnimationFrame(adjustTooltipPositions);
+            });
+        });
+    </script>
+</body>
+</html>

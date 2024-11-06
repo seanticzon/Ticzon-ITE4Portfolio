@@ -4,49 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise M1 - Implementing NLP Application Models using Spacy</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation Bar -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Back to Home</a>
-                </div>
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <a href="midterms.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    Back to Midterms
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Content Section -->
-    <section class="pt-24 pb-12">
+    <section class="pt-32 pb-20">
         <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-8">Exercise M1 - Implementing NLP Application Models using Spacy</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-12 accent-gradient" data-aos="fade-up">
+                Exercise M1: Implementing NLP Application Models using Spacy
+            </h1>
             
             <!-- Grade Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4">Grade</h2>
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Grade</h2>
                 <div class="flex items-center space-x-2">
-                    <span class="text-3xl font-bold text-indigo-600">85</span>
-                    <span class="text-gray-600">/</span>
-                    <span class="text-gray-600">100</span>
+                    <span class="text-4xl font-bold text-[#00F5A0]">85</span>
+                    <span class="text-gray-400">/</span>
+                    <span class="text-gray-400">100</span>
                 </div>
             </div>
 
             <!-- File Viewer and Download -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-4">Jupyter Notebook</h3>
-                    <div class="mb-4">
+            <div class="glass-card rounded-xl overflow-hidden mb-8" data-aos="fade-up">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-6 accent-gradient">Jupyter Notebook</h3>
+                    <div class="mb-6">
                         <img 
                             src="Midterms/ExerciseM1/ExerciseM1.png" 
                             alt="Notebook Preview"
-                            class="w-full rounded-lg shadow-md">
+                            class="w-full rounded-xl shadow-lg">
                     </div>
-                    <p class="text-gray-600 mb-4">Implementation of Natural Language Processing application models utilizing the Spacy library for advanced text analysis and processing.</p>
+                    <p class="text-gray-300 mb-6">Implementation of Natural Language Processing application models utilizing the Spacy library for advanced text analysis and processing.</p>
                     <a href="https://colab.research.google.com/drive/188rsdHNB6xC4P9_P2STpBVWMm4rKHZYt?usp=sharing" 
-                       class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                       class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                        target="_blank">
                         View Notebook
                     </a>
@@ -54,64 +89,114 @@
             </div>
 
             <!-- Reflection Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4">Personal Reflection</h2>
-                <div class="prose max-w-none text-gray-600">
-                    <p class="mb-4">
-                        This exercise deepened my understanding of implementing NLP application models using Spacy.
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-300">
+                    <p class="mb-4 text-justify">
+                        For the Implementing of NLP application models using <span class="accent-gradient font-semibold">Spacy</span>, our task was to add 30 or more data for each classification task. The classification tasks are the following:
                     </p>
-                    <p class="mb-4">
-                        Key takeaways from this exercise include:
-                    </p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Understanding Spacy's core functionalities</li>
-                        <li>Implementing various NLP models</li>
-                        <li>Text analysis and processing techniques</li>
-                        <li>Practical application of NLP concepts</li>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Email Classification</span>: Identifying whether the email is SPAM or HAM.</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Named Entity Recognition</span>: It refers to the process of extracting and categorizing entities in a text according to pre-defined categories such as names of people, organizations, locations, dates, etc.</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Part of Speech Tagging</span>: Assigns each word of the sentence a grammatical category: nouns, verbs, adjectives, adverbs, and so on.</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Sentiment Analysis</span>: It is a 3-point scale classifying text as either positive, negative, or neutral.</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Text Summarization</span>: A technique that involves condensing large volumes of text into shorter, coherent summaries while preserving the key information and meaning.</span>
+                        </li>
                     </ul>
+
+                    <p class="mb-4 text-justify">
+                        I added manual training data here, and they are labeled according to the classification task. For the Email Classification, I added the body of the legitimate email and its label "<span class="accent-gradient font-semibold">HAM</span>" and the body of the spam email and labeled it as "<span class="accent-gradient font-semibold">SPAM</span>".
+                    </p>
+
+                    <p class="mb-4 text-justify">
+                        For the Named Entity Recognition or <span class="accent-gradient font-semibold">NER</span>, I added a sentence or the headlines of news articles and carefully counted the indexes of the characters, including whitespaces, for naming entities. Examples of labels are "<span class="accent-gradient font-semibold">ORG</span>" for organizations and "<span class="accent-gradient font-semibold">PERSON</span>" for persons.
+                    </p>
+
+                    <p class="mb-4 text-justify">
+                        In the <span class="accent-gradient font-semibold">Part of Speech Tagging</span>, it is also similar to NER, but we are going to tag each word or text in the sentence according to their grammatical category. Example labels are "<span class="accent-gradient font-semibold">NOUN</span>", "<span class="accent-gradient font-semibold">VERB</span>", "<span class="accent-gradient font-semibold">PUNCT</span>", "<span class="accent-gradient font-semibold">ADJ</span>", etc.
+                    </p>
+
+                    <p class="mb-4 text-justify">
+                        For the Sentiment Analysis, it is also similar to SPAM and HAM, adding the text for online product reviews. Example labels for each are "<span class="accent-gradient font-semibold">POSITIVE</span>", "<span class="accent-gradient font-semibold">NEGATIVE</span>", and "<span class="accent-gradient font-semibold">NEUTRAL</span>".
+                    </p>
+
+                    <p class="mb-4 text-justify">
+                        Lastly, for the text summarization, we are going to input a long text that the text summarization model will identify and extract the relevant information, decreasing the text size for a summary that will capture the key points.
+                    </p>
                 </div>
             </div>
 
             <!-- Instructor Comments Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-2xl font-bold mb-4">Instructor Comments</h2>
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">Upon checking Mr.Ticzon's work, I see that he effectively introduces NLP application models using spaCy, clearly explaining email classification and named entity recognition (NER) while demonstrating a solid understanding of the subject through well-commented and organized code; however, i think that it could improve it's clarity, depth of explanation, and formatting.
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Instructor Comments</h2>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">Upon checking Mr.Ticzon's work, I see that he effectively introduces NLP application models using spaCy, clearly explaining email classification and named entity recognition (NER) while demonstrating a solid understanding of the subject through well-commented and organized code; however, i think that it could improve it's clarity, depth of explanation, and formatting.
 
-
-
-                            In the installation section, adding a brief explanation of spaCy's importance in NLP and potential dependencies would be beneficial. While the email classification section provides good context and explains the difference between spam and ham, including real-world applications, like its significance for businesses, would enhance understanding. As it's function descriptions are useful but should simplify complex phrases and break up long sentences for readability. The comprehensive syntax explanation could be organized into bullet points for easier following, and while input/output details are clear, an example dataset would clarify expected inputs and the code flow section effectively summarizes the process but could be presented as key bullet points for quicker comprehension. 
-                            
-                            
-                            
-                            Overall, while the code is well-organized and logical, adding comments for complex lines, ensuring consistent formatting, and using Markdown cells for section separation would significantly enhance readability. 
-                            
-                            
-                            
-                            In conclusion, this notebook successfully covers the fundamental concepts of email classification and NER using spaCy, and with adjustments to clarity, depth of explanation, and formatting, it can serve as an excellent resource for learning to implement NLP models. Great job!</p>
+                        In the installation section, adding a brief explanation of spaCy's importance in NLP and potential dependencies would be beneficial. While the email classification section provides good context and explains the difference between spam and ham, including real-world applications, like its significance for businesses, would enhance understanding. As it's function descriptions are useful but should simplify complex phrases and break up long sentences for readability. The comprehensive syntax explanation could be organized into bullet points for easier following, and while input/output details are clear, an example dataset would clarify expected inputs and the code flow section effectively summarizes the process but could be presented as key bullet points for quicker comprehension. 
+                        
+                        Overall, while the code is well-organized and logical, adding comments for complex lines, ensuring consistent formatting, and using Markdown cells for section separation would significantly enhance readability. 
+                        
+                        In conclusion, this notebook successfully covers the fundamental concepts of email classification and NER using spaCy, and with adjustments to clarity, depth of explanation, and formatting, it can serve as an excellent resource for learning to implement NLP models. Great job!</p>
                         <span class="text-sm text-gray-500">Date: Oct 22 at 7:02pm</span>
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">Mr. Ticzon's work introduces the basic NLP tasks in email classification and text summarization using spaCy. The classification model separates spam from non-spam emails, while the summarization approach picks out key sentences based on word importance. The explanations are clear, making it a good resource for beginners in NLP. However, the simple methods used may struggle with more complex or varied text. Adding advanced models, like transformers, and including accuracy checks could make the models more reliable. Overall, his work provides a useful starting point and could improved further.</p>
+
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">Mr. Ticzon's work introduces the basic NLP tasks in email classification and text summarization using spaCy. The classification model separates spam from non-spam emails, while the summarization approach picks out key sentences based on word importance. The explanations are clear, making it a good resource for beginners in NLP. However, the simple methods used may struggle with more complex or varied text. Adding advanced models, like transformers, and including accuracy checks could make the models more reliable. Overall, his work provides a useful starting point and could improved further.</p>
                         <span class="text-sm text-gray-500">Date: Nov 1 at 12:44pm</span>
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">good descriptions but with added data
-                        </p>
+
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">good descriptions but with added data</p>
                         <span class="text-sm text-gray-500">Date: Nov 2 at 4:29pm</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Activity Navigation -->
+            <div class="bg-gray-900/80 backdrop-blur-md rounded-xl p-6" data-aos="fade-up">
+                <div class="flex justify-between items-center">
+                    <div class="invisible">
+                        <!-- Invisible placeholder to maintain spacing -->
+                        <a href="#" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0]">
+                            Previous Activity
+                            <i class="fas fa-arrow-left ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Current Activity Indicator -->
+                    <span class="text-[#00F5A0]">Exercise M1</span>
+
+                    <!-- Next Activity -->
+                    <a href="ExerciseM1.1.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Next Activity
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>

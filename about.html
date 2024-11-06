@@ -3,24 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Portfolio</title>
+    <title>Sean Ticzon - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
+    <!-- Core Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <style>
-        .gradient-text {
-            background: linear-gradient(45deg, #4f46e5, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
         }
 
-        /* Smooth Scroll Behavior */
-        html {
-            scroll-behavior: smooth;
+        .gradient-bg {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
         }
 
-        /* Animated Background Gradient */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+        }
+
         .animated-gradient {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background: linear-gradient(-45deg, #84fab0, #8fd3f4, #a8edea, #fed6e3);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
         }
@@ -31,153 +63,156 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Enhanced Card Hover Effects */
+        .skill-progress {
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
         .hover-card {
             transition: all 0.3s ease;
-            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .hover-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) rotateX(10deg);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .hover-card i {
-            transition: all 0.3s ease;
+        .scroll-indicator {
+            animation: bounce 2s infinite;
         }
 
-        .hover-card:hover i {
-            transform: scale(1.2);
-            color: #4f46e5;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
         }
 
-        /* Loading Animation */
-        .loading-overlay {
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            border-radius: 4px;
+        }
+
+        /* Particle Background */
+        #particles-js {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: fadeOut 1s ease-in-out forwards;
-            animation-delay: 2s;
+            z-index: -1;
         }
 
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; visibility: hidden; }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
         }
 
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        /* Add these new styles */
+        .flip-card {
+            perspective: 1000px;
+            opacity: 0;
+            transform: rotateY(180deg);
+            transition: all 1s ease-out;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .flip-card.aos-animate {
+            opacity: 1;
+            transform: rotateY(0);
         }
 
-        /* Custom animation for cards */
-        @keyframes floatIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
         }
 
-        .hover-card {
-            animation: floatIn 0.6s ease-out forwards;
+        .fade-up.aos-animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hover-card:nth-child(1) { animation-delay: 0.1s; }
-        .hover-card:nth-child(2) { animation-delay: 0.2s; }
-        .hover-card:nth-child(3) { animation-delay: 0.3s; }
-        .hover-card:nth-child(4) { animation-delay: 0.4s; }
+        .gradient-text {
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Add these to your existing styles */
+        .nav-text {
+            color: #1a202c; /* Initial black color */
+            transition: all 0.3s ease;
+        }
+
+        .nav-text.scrolled {
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Loading Animation -->
-    <div class="loading-overlay">
-        <div class="loader"></div>
-    </div>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
 
-    <!-- Navigation Bar -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
-                    <a href="about.html" class="text-indigo-600">About</a>
-                    <a href="index.html#projects" class="text-gray-700 hover:text-indigo-600 transition">Portfolio</a>
-                    <a href="index.html#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 glass-card">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-2xl font-bold nav-text">Portfolio</a>
+                    <div class="hidden md:flex space-x-8">
+                        <a href="index.html" class="nav-text hover:text-green-300 transition">Home</a>
+                        <a href="#about" class="nav-text hover:text-green-300 transition">About</a>
+                        <a href="#skills" class="nav-text hover:text-green-300 transition">Skills</a>
+                        <a href="#interests" class="nav-text hover:text-green-300 transition">Interests</a>
+                        <a href="#achievements" class="nav-text hover:text-green-300 transition">Achievements</a>
+                        <a href="#contact" class="nav-text hover:text-green-300 transition">Contact</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Main Content -->
-    <div class="pt-20">
-        <!-- Profile Section with Background -->
-        <section class="py-20 relative">
-            <!-- Background Image with Overlay -->
-            <div class="absolute inset-0 z-0">
-                <img src="images/innerhero.jpg" alt="Background" class="w-full h-full object-cover">
-                <!-- Light overlay for better content visibility -->
-                <div class="absolute inset-0 bg-white/90"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="container mx-auto px-6 relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center animated-gradient">
+            <div class="container mx-auto px-6 text-center">
                 <div class="max-w-4xl mx-auto">
-                    <div class="flex flex-col md:flex-row items-center gap-12" data-aos="fade-up">
-                        <!-- Profile Image -->
-                        <div class="w-64 h-64 rounded-full overflow-hidden shadow-xl">
-                            <img src="images/seanticzon.jpg" alt="Sean Repti Miguel L. Ticzon" 
-                                 class="w-full h-full object-cover">
+                    <div class="mb-8">
+                        <img src="images/seanticzon.jpg" alt="Sean Ticzon" 
+                             class="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full mx-auto mb-6 border-4 border-white shadow-xl hover:scale-105 transition-transform duration-300">
+                        <h1 class="text-5xl font-bold mb-4 text-gray-900">Sean Repti Miguel L. Ticzon</h1>
+                        <p class="text-xl mb-8 text-gray-900">Information Technology Student & Developer</p>
+                        <div class="flex justify-center space-x-4">
                         </div>
-                        <!-- Basic Info -->
-                        <div class="text-center md:text-left">
-                            <h1 class="text-4xl font-bold gradient-text mb-4">Sean Repti Miguel L. Ticzon</h1>
-                            <p class="text-xl text-gray-600 mb-6">Student of Bachelor of Science in Information Technology</p>
-                            <div class="flex gap-4 justify-center md:justify-start">
-                                <a href="#" class="text-gray-600 hover:text-indigo-600">
-                                    <i class="fab fa-github text-2xl"></i>
-                                </a>
-                                <a href="#" class="text-gray-600 hover:text-indigo-600">
-                                    <i class="fab fa-linkedin text-2xl"></i>
-                                </a>
-                                <a href="#" class="text-gray-600 hover:text-indigo-600">
-                                    <i class="fab fa-twitter text-2xl"></i>
-                                </a>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="scroll-indicator text-white mt-12">
+                        <i class="fas fa-chevron-down text-2xl"></i>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Personal Introduction -->
-        <section class="py-16 bg-gray-50">
+        <!-- About Section -->
+        <section id="about" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-8 gradient-text">Personal Introduction</h2>
-                    <div class="prose lg:prose-lg text-gray-600">
-                        <p class="mb-4">
+                    <h2 class="text-4xl font-bold mb-12 text-center">About Me</h2>
+                    <div class="glass-card p-8 rounded-2xl">
+                        <p class="text-lg leading-relaxed text-justify">
                             I am Sean Repti Miguel L. Ticzon, a student of Bachelor of Science in Information Technology in Jose Rizal University. I am a passionate and dedicated individual who is always eager to learn and grow. I am a quick learner and I am always looking for new challenges to tackle. I am a team player and I am always willing to help my peers. I am a problem solver and I am always looking for new solutions to problems. I am a creative thinker and I am always looking for new ideas to implement. I am a hard worker and I am always looking for new ways to improve my skills. I am a good communicator and I am always looking for new ways to improve my communication skills. I am a good listener and I am always looking for new ways to improve my listening skills. I am a good team player and I am always looking for new ways to improve my team player skills.
+
 
                         </p>
                     </div>
@@ -185,118 +220,219 @@
             </div>
         </section>
 
-        <!-- Skills and Expertise -->
-        <section class="py-16 bg-white">
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-800">
             <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-8 gradient-text">Skills & Expertise</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Technical Skills -->
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-semibold mb-4">Technical Skills</h3>
-                            <div class="space-y-3">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">HTML/CSS</span>
-                                        <span class="text-gray-600">90%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 90%"></div>
-                                    </div>
+                <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <!-- Technical Skills -->
+                    <div class="glass-card p-8 rounded-2xl" data-aos="fade-right">
+                        <h3 class="text-2xl font-semibold mb-6">Technical Skills</h3>
+                        <div class="space-y-6">
+                            <!-- Add your skills here with animated progress bars -->
+                            <!-- Example: -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>HTML/CSS</span>
+                                    <span>90%</span>
                                 </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">JavaScript</span>
-                                        <span class="text-gray-600">60%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 60%"></div>
-                                    </div>
+                                <div class="h-2 bg-gray-700 rounded-full">
+                                    <div class="h-2 rounded-full animated-gradient skill-progress" 
+                                         data-width="90%" 
+                                         style="width: 0%"></div>
                                 </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">PHP</span>
-                                        <span class="text-gray-600">80%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">SQL</span>
-                                        <span class="text-gray-600">80%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">JAVA</span>
-                                        <span class="text-gray-600">75%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                                <!-- Add more skills as needed -->
                             </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>JavaScript</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full">
+                                    <div class="h-2 rounded-full animated-gradient skill-progress" 
+                                         data-width="60%" 
+                                         style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>PHP</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full">
+                                    <div class="h-2 rounded-full animated-gradient skill-progress" 
+                                         data-width="80%" 
+                                         style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>SQL</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full">
+                                    <div class="h-2 rounded-full animated-gradient skill-progress" 
+                                         data-width="80%" 
+                                         style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>JAVA</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="h-2 bg-gray-700 rounded-full">
+                                    <div class="h-2 rounded-full animated-gradient skill-progress" 
+                                         data-width="75%" 
+                                         style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Add more skills similarly -->
                         </div>
-                        <!-- Soft Skills -->
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-semibold mb-4">Soft Skills</h3>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                <li>Problem Solving</li>
-                                <li>Team Collaboration</li>
-                                <li>Project Management</li>
-                                <li>Communication</li>
-                            </ul>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="glass-card p-8 rounded-2xl" data-aos="fade-left">
+                        <h3 class="text-2xl font-semibold mb-6">Soft Skills</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                Problem Solving
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                Team Collaboration
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                Communication
+                            </li>
+                            <!-- Add more soft skills -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Interests & Hobbies</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <!-- Web Development -->
+                    <div class="glass-card p-6 rounded-xl hover-card flip-card" data-aos="flip-left" data-aos-delay="0">
+                        <div class="text-center">
+                            <i class="fas fa-globe text-4xl mb-4 text-green-400"></i>
+                            <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+                            <p class="text-gray-300">Creating responsive and modern web applications</p>
+                        </div>
+                    </div>
+
+                    <!-- Coding -->
+                    <div class="glass-card p-6 rounded-xl hover-card flip-card" data-aos="flip-left" data-aos-delay="100">
+                        <div class="text-center">
+                            <i class="fas fa-code text-4xl mb-4 text-green-400"></i>
+                            <h3 class="text-xl font-semibold mb-3">Coding</h3>
+                            <p class="text-gray-300">Exploring different programming languages and solving problems</p>
+                        </div>
+                    </div>
+
+                    <!-- Gaming -->
+                    <div class="glass-card p-6 rounded-xl hover-card flip-card" data-aos="flip-left" data-aos-delay="200">
+                        <div class="text-center">
+                            <i class="fas fa-gamepad text-4xl mb-4 text-green-400"></i>
+                            <h3 class="text-xl font-semibold mb-3">Gaming</h3>
+                            <p class="text-gray-300">Playing various video games and exploring virtual worlds</p>
+                        </div>
+                    </div>
+
+                    <!-- Trading Card Games -->
+                    <div class="glass-card p-6 rounded-xl hover-card flip-card" data-aos="flip-left" data-aos-delay="300">
+                        <div class="text-center">
+                            <i class="fas fa-diamond text-4xl mb-4 text-green-400"></i>
+                            <h3 class="text-xl font-semibold mb-3">Trading Card Games</h3>
+                            <p class="text-gray-300">Collecting and playing strategic card games</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interests and Hobbies -->
-        <section class="py-16 bg-gray-50">
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-20 bg-gray-800">
             <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-8 gradient-text">Interests & Hobbies</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Web Development Card -->
-                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
-                            <div class="flex flex-col items-center text-center">
-                                <i class="fas fa-globe text-4xl text-indigo-600 mb-4"></i>
-                                <h3 class="font-semibold mb-3">Website Development</h3>
-                                <p class="text-gray-600">Passionate about creating responsive and user-friendly websites using modern technologies and frameworks.</p>
+                <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">Achievements</h2>
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Trainings and Seminars - Left Column -->
+                    <div class="glass-card p-8 rounded-2xl h-full" data-aos="fade-right">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Trainings and Seminars</h3>
+                        <div class="space-y-6">
+                            <!-- Seminar 1 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-certificate text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">Writing Chapter 1: Strategies for Crafting Objectives</h3>
+                                    <p class="text-gray-300">Research Writing Seminar</p>
+                                </div>
+                            </div>
+
+                            <!-- Seminar 2 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-certificate text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">Best Practices in Writing Review of Related Literature</h3>
+                                    <p class="text-gray-300">Research Writing Seminar</p>
+                                </div>
+                            </div>
+
+                            <!-- Seminar 3 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-certificate text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">Navigating the Software Development Landscape</h3>
+                                    <p class="text-gray-300">Exploring Methodologies for Success</p>
+                                </div>
+                            </div>
+
+                            <!-- Seminar 4 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-certificate text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">Effective Strategies For Writing Results, Discussion, And Conclusion</h3>
+                                    <p class="text-gray-300">Academic Research Writing Seminar</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Coding Card -->
-                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
-                            <div class="flex flex-col items-center text-center">
-                                <i class="fas fa-code text-4xl text-indigo-600 mb-4"></i>
-                                <h3 class="font-semibold mb-3">Coding</h3>
-                                <p class="text-gray-600">Love exploring different programming languages and solving complex problems through code.</p>
+                    <!-- Awards and Recognitions - Right Column -->
+                    <div class="glass-card p-8 rounded-2xl h-full" data-aos="fade-left">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Awards and Recognitions</h3>
+                        <div class="space-y-6">
+                            <!-- Award 1 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-trophy text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">IT & EMC Skills Competition</h3>
+                                    <p class="text-gray-300">Java Programming – 1st place</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Gaming Card -->
-                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
-                            <div class="flex flex-col items-center text-center">
-                                <i class="fas fa-gamepad text-4xl text-indigo-600 mb-4"></i>
-                                <h3 class="font-semibold mb-3">Gaming</h3>
-                                <p class="text-gray-600">Enthusiastic gamer who enjoys both competitive and story-driven games across various platforms.</p>
+                            <!-- Award 2 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-trophy text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">12th IT Skills Olympics</h3>
+                                    <p class="text-gray-300">Java Programming – 15th place</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- TCG/Yu-Gi-Oh! Card -->
-                        <div class="bg-white p-6 rounded-lg shadow-md hover-card">
-                            <div class="flex flex-col items-center text-center">
-                                <i class="fas fa-cards text-4xl text-indigo-600 mb-4"></i>
-                                <h3 class="font-semibold mb-3">Trading Card Games</h3>
-                                <p class="text-gray-600">Dedicated Yu-Gi-Oh! player and collector, enjoying the strategy and community aspects of TCGs.</p>
+                            <!-- Award 3 -->
+                            <div class="flex items-start">
+                                <i class="fas fa-award text-green-400 text-2xl mt-1 mr-4"></i>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">IT SPECIALIST</h3>
+                                    <p class="text-gray-300">Database Certification</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -304,77 +440,71 @@
             </div>
         </section>
 
-        <!-- Achievements -->
-        <section class="py-16 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-8 gradient-text">Achievements</h2>
-                    
-                    <!-- Trainings and Seminars -->
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Trainings and Seminars</h3>
-                        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
-                            <ul class="space-y-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-certificate text-indigo-600 mt-1 mr-3"></i>
-                                    <span class="text-gray-600">Writing Chapter 1: Strategies for Crafting Objectives</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-certificate text-indigo-600 mt-1 mr-3"></i>
-                                    <span class="text-gray-600">Best Practices in Writing Review of Related Literature</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-certificate text-indigo-600 mt-1 mr-3"></i>
-                                    <span class="text-gray-600">Navigating the Software Development Landscape: Exploring Methodologies for Success</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Awards and Recognitions -->
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Awards and Recognitions</h3>
-                        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
-                            <ul class="space-y-4">
-                                <li class="flex items-start">
-                                    <i class="fas fa-trophy text-indigo-600 mt-1 mr-3"></i>
-                                    <div class="text-gray-600">
-                                        <span class="font-semibold">IT & EMC Skills Competition</span>
-                                        <ul class="list-disc ml-5 mt-2">
-                                            <li>Java Programming – 1st place</li>
-                                            <li>12th IT Skills Olympics Java Programming – 15th place</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-award text-indigo-600 mt-1 mr-3"></i>
-                                    <span class="text-gray-600">IT SPECIALIST - Database</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-full filter blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
             </div>
-        </section>
 
-        <!-- Contact Information -->
-        <section class="py-16 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-8 gradient-text">Contact Information</h2>
-                    <div class="bg-white rounded-lg shadow-md p-8">
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <i class="fas fa-envelope text-indigo-600"></i>
-                                <span class="text-gray-600">seanticzon@gmail.com</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <i class="fas fa-phone text-indigo-600"></i>
-                                <span class="text-gray-600">0915-340-1432</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <i class="fas fa-map-marker-alt text-indigo-600"></i>
-                                <span class="text-gray-600">Mandaluyong City, Philippines</span>
+            <div class="container mx-auto px-6 relative">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <span class="accent-gradient">Get in Touch</span>
+                </h2>
+                
+                <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-8 md:p-12 rounded-xl hover-lift transition-all duration-300 backdrop-blur-lg border border-gray-700/50">
+                        <h3 class="text-2xl md:text-3xl font-semibold mb-12 accent-gradient text-center">Contact Info</h3>
+                        
+                        <div class="space-y-8 max-w-md mx-auto">
+                            <!-- Email -->
+                            <a href="mailto:seanticzon@gmail.com" 
+                               class="flex items-center space-x-6 group p-4 rounded-xl hover:bg-gray-700/30 transition-all duration-300 hover:scale-105 transform">
+                                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/50 
+                                          group-hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] 
+                                          transition-all duration-300 shadow-lg group-hover:shadow-[#00F5A0]/20">
+                                    <i class="fas fa-envelope text-xl text-[#00F5A0] group-hover:text-gray-900 transition-colors duration-300"></i>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm text-gray-400 font-medium">Email</span>
+                                    <span class="text-lg text-gray-200 group-hover:text-white transition-colors duration-300">
+                                        seanticzon@gmail.com
+                                    </span>
+                                </div>
+                                <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-300 text-[#00F5A0]"></i>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+639153401432" 
+                               class="flex items-center space-x-6 group p-4 rounded-xl hover:bg-gray-700/30 transition-all duration-300 hover:scale-105 transform">
+                                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/50 
+                                          group-hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] 
+                                          transition-all duration-300 shadow-lg group-hover:shadow-[#00F5A0]/20">
+                                    <i class="fas fa-phone text-xl text-[#00F5A0] group-hover:text-gray-900 transition-colors duration-300"></i>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm text-gray-400 font-medium">Phone</span>
+                                    <span class="text-lg text-gray-200 group-hover:text-white transition-colors duration-300">
+                                        0915-340-1432
+                                    </span>
+                                </div>
+                                <i class="fas fa-arrow-right ml-auto opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-300 text-[#00F5A0]"></i>
+                            </a>
+
+                            <!-- Location -->
+                            <div class="flex items-center space-x-6 group p-4 rounded-xl hover:bg-gray-700/30 transition-all duration-300 hover:scale-105 transform">
+                                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-700/50 
+                                          group-hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] 
+                                          transition-all duration-300 shadow-lg group-hover:shadow-[#00F5A0]/20">
+                                    <i class="fas fa-map-marker-alt text-xl text-[#00F5A0] group-hover:text-gray-900 transition-colors duration-300"></i>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm text-gray-400 font-medium">Location</span>
+                                    <span class="text-lg text-gray-200 group-hover:text-white transition-colors duration-300">
+                                        Mandaluyong City, Philippines
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -382,64 +512,104 @@
             </div>
         </section>
 
-
+        <!-- Footer -->
+        <footer class="py-8 text-center">
+            <div class="container mx-auto px-6">
+                <p>© 2024 Sean Repti Miguel L. Ticzon. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2024 Sean Repti Miguel L. Ticzon. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
-    <!-- AOS Init -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#84fab0' },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#84fab0',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Initialize AOS
         AOS.init({
             duration: 1000,
-            once: true
-        });
-    </script>
-    <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
         });
 
-        // Intersection Observer for scroll animations
+        // Animate skill bars on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width;
                 }
             });
+        }, {
+            threshold: 0.5
         });
 
-        document.querySelectorAll('.hover-card').forEach((el) => observer.observe(el));
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            observer.observe(bar);
+        });
 
-        // Text animation for headings
-        const animateText = (element) => {
-            const text = element.textContent;
-            element.textContent = '';
-            
-            for (let i = 0; i < text.length; i++) {
-                const span = document.createElement('span');
-                span.textContent = text[i];
-                span.style.animationDelay = `${i * 0.1}s`;
-                span.classList.add('animate-in');
-                element.appendChild(span);
-            }
-        };
+        // Add this to your existing scripts
+        const heroSection = document.querySelector('.min-h-screen');
+        const navLinks = document.querySelectorAll('.nav-text');
 
-        document.querySelectorAll('h1, h2').forEach(heading => {
-            animateText(heading);
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            const scrollPosition = window.scrollY + 100; // Added offset for earlier transition
+
+            navLinks.forEach(link => {
+                if (scrollPosition > heroBottom) {
+                    link.classList.add('scrolled');
+                } else {
+                    link.classList.remove('scrolled');
+                }
+            });
         });
     </script>
 </body>

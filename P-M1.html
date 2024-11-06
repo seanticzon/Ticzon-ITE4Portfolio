@@ -4,52 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYNNER Project Proposal</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation Bar -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Back to Home</a>
-                </div>
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <a href="midterms.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    Back to Midterms
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Content Section -->
-    <section class="pt-24 pb-12">
+    <section class="pt-32 pb-20">
         <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-8">P-M1 (Project Proposal Presentation) - SYNNER Project Proposal</h1>
-            
-            <!-- Grade Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4">Grade</h2>
-                <div class="flex items-center space-x-2">
-                    <span class="text-3xl font-bold text-indigo-600">N/A</span>
-                    <span class="text-gray-600">/</span>
-                    <span class="text-gray-600">100</span>
+            <!-- Header and Grade Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient">P-M1 (Project Proposal Presentation) - SYNNER Project Proposal</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="glass-card p-6 rounded-xl border border-[#00F5A0]/20">
+                        <span class="text-sm text-gray-400 block mb-2">Grade Achieved</span>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-4xl font-bold text-[#00F5A0]">N/A</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">100</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- File Viewers -->
             <div class="grid grid-cols-1 gap-8 mb-8">
                 <!-- Presentation File -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Project Presentation</h3>
-                        <div class="mb-4">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Project Presentation</h3>
+                        <div class="mb-6">
                             <iframe 
                                 src="https://docs.google.com/presentation/d/1fUl2QlY-ZXggfBRGeGFrJJ3YoTinGIEN/preview" 
-                                class="w-full h-[600px] border rounded-lg"
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
                                 title="Presentation Viewer">
                             </iframe>
                         </div>
-                        <p class="text-gray-600 mb-4">Project proposal presentation slides detailing the SYNNER project overview and objectives.</p>
+                        <p class="text-gray-300 mb-6">Project proposal presentation slides detailing the SYNNER project overview and objectives.</p>
                         <a href="https://docs.google.com/presentation/d/1fUl2QlY-ZXggfBRGeGFrJJ3YoTinGIEN/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
-                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                            target="_blank">
                             View Presentation
                         </a>
@@ -57,19 +93,19 @@
                 </div>
 
                 <!-- Documentation File -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Project Documentation</h3>
-                        <div class="mb-4">
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Project Documentation</h3>
+                        <div class="mb-6">
                             <iframe 
                                 src="https://docs.google.com/document/d/17PW5GlsDmnEL5ohKOvMs7AhimflpsYe4/preview" 
-                                class="w-full h-[600px] border rounded-lg"
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
                                 title="Documentation Viewer">
                             </iframe>
                         </div>
-                        <p class="text-gray-600 mb-4">Detailed project proposal documentation including requirements, scope, and implementation plans.</p>
+                        <p class="text-gray-300 mb-6">Detailed project proposal documentation including requirements, scope, and implementation plans.</p>
                         <a href="https://docs.google.com/document/d/17PW5GlsDmnEL5ohKOvMs7AhimflpsYe4/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
-                           class="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
                            target="_blank">
                             View Document
                         </a>
@@ -78,83 +114,117 @@
             </div>
 
             <!-- Reflection Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4">Personal Reflection</h2>
-                <div class="prose max-w-none text-gray-600">
-                    <p class="mb-4">
-                        The SYNNER project proposal development process helped in understanding comprehensive project planning and documentation.
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-300">
+                    <p class="mb-4 text-justify">
+                        For the project proposal, my group and I had a hard time thinking of and creating solutions that could help our university. We leaned on using <span class="accent-gradient font-semibold">sentiment analysis</span> for our project proposal and also incorporated <span class="accent-gradient font-semibold">BERT</span>, <span class="accent-gradient font-semibold">Naive Bayes</span>, and <span class="accent-gradient font-semibold">SVM</span> for our models to test the different results and determine which models fit best for this proposal. My group and I have already made a request to the <span class="accent-gradient font-semibold">GTO</span> (Guidance Testing Office) for the data we need, and they have already acknowledged our objectives for this proposal.
                     </p>
-                    <p class="mb-4">
-                        Key takeaways from this project include:
-                    </p>
-                    <ul class="list-disc pl-6 mb-4">
-                        <li>Project scope definition</li>
-                        <li>Technical documentation</li>
-                        <li>Presentation skills</li>
-                        <li>Project planning</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Instructor Comments Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-2xl font-bold mb-4">Peer Review Comments</h2>
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">It timely applies regular sentiment analysis to the student feedback collected and uses the Naive Bayes and SVM models in particular. A logical approach to solving the problems has been used and the time table adopted is perfectly reasonable. However, unstructured data may pose a challenge to actionable insights, due to the fact that they are brought into the model without prior structure. The increase of attention to data preprocessing may improve the quality of analysis. The research focuses on an important question in the field of education, which outlines the approach to sentiment analysis specifically and clearly. The application of multiple models shows that it is systematic. This research could have benefitted from a more detailed conversation on the data preprocessing strategies to enhance the management of unstructured feedback.</p>
+            <!-- Peer Review Comments Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Peer Review Comments</h2>
+                <div class="space-y-6">
+                    <!-- Comment sections - repeat for each comment -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">
+                            
+                        It timely applies regular sentiment analysis to the student feedback collected and uses the Naive Bayes and SVM models in particular. A logical approach to solving the problems has been used and the time table adopted is perfectly reasonable. However, unstructured data may pose a challenge to actionable insights, due to the fact that they are brought into the model without prior structure. The increase of attention to data preprocessing may improve the quality of analysis. The research focuses on an important question in the field of education, which outlines the approach to sentiment analysis specifically and clearly. The application of multiple models shows that it is systematic. This research could have benefitted from a more detailed conversation on the data preprocessing strategies to enhance the management of unstructured feedback.
+                        </p>
                         <span class="text-sm text-gray-500">Date: Oct 21 at 11:56pm</span>
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">SYNNER group talking about public datasets and the approach of directly contacting educational institutions to source proprietary data. How exactly this raw data is going to be checked for completeness and relevance is not precisely known. the proposal agree that qualitative feedback may yield no helpful insights but does not clarify what this will be transformed into so that practical advice becomes available to school authorities. The timeline proposed is too short and does not outline clear objectives for each segment of the study.</p>
-                        <span class="text-sm text-gray-500">Date: Oct 22 at 5:52pm</span>
+                    <div class="space-y-6">
+                        <!-- Comment sections - repeat for each comment -->
+                        <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                            <p class="text-gray-300 mb-4">
+                                
+                                SYNNER group talking about public datasets and the approach of directly contacting educational institutions to source proprietary data. How exactly this raw data is going to be checked for completeness and relevance is not precisely known. the proposal agree that qualitative feedback may yield no helpful insights but does not clarify what this will be transformed into so that practical advice becomes available to school authorities. The timeline proposed is too short and does not outline clear objectives for each segment of the study.
+                            </p>
+                            <span class="text-sm text-gray-500">Date: Oct 22 at 5:52pm</span>
+                        </div>
+                        <!-- ... Repeat for other comments ... -->
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">I don’t know what happened, but I think our work was assigned to me. Since it happened this way, I will just try to look at our work in a third person perspective so that I can judge it accordingly. 
+                    <div class="space-y-6">
+                        <!-- Comment sections - repeat for each comment -->
+                        <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                            <p class="text-gray-300 mb-4">
+                                
+                                I don’t know what happened, but I think our work was assigned to me. Since it happened this way, I will just try to look at our work in a third person perspective so that I can judge it accordingly. 
 
 
 
-                            First, I want to point out that the powerpoint presentation has paragraphs making it a little too cramped. It should be in bulleted form to point out the key points. There’s two timelines of the study, but it did not explicitly mention the dates and the objectives for each day or week. 
-                            
-                            
-                            
-                            In the document file, it was not specified what are and how many data sources are going to be used. It is also a little vague and complex if you look closely into it. The timeline of the study did not follow the Gantt Chart format, making it out of place. Hopefully we can fix this, along with the other peer reviews to create a more specific output and inclined to the project’s objectives.</p>
-                        <span class="text-sm text-gray-500">Date: Oct 24 at 3:32pm</span>
+                                First, I want to point out that the powerpoint presentation has paragraphs making it a little too cramped. It should be in bulleted form to point out the key points. There’s two timelines of the study, but it did not explicitly mention the dates and the objectives for each day or week. 
+                                
+                                
+                                
+                                In the document file, it was not specified what are and how many data sources are going to be used. It is also a little vague and complex if you look closely into it. The timeline of the study did not follow the Gantt Chart format, making it out of place. Hopefully we can fix this, along with the other peer reviews to create a more specific output and inclined to the project’s objectives.                            </p>
+                            <span class="text-sm text-gray-500">Date: Oct 24 at 3:32pm</span>
+                        </div>
+                        <!-- ... Repeat for other comments ... -->
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">For SYNNER group, using sentiment analysis to evaluate student feedback after school events is clear and well-structured. It effectively outlines the problem of handling unstructured feedback data and the need to transform it into useful insights for school improvement. Using models like BERT, Naive Bayes, and SVM is a practical choice, as each provides unique advantages for analyzing sentiment.
+                    <div class="space-y-6">
+                        <!-- Comment sections - repeat for each comment -->
+                        <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                            <p class="text-gray-300 mb-4">
+                                
+                                For SYNNER group, using sentiment analysis to evaluate student feedback after school events is clear and well-structured. It effectively outlines the problem of handling unstructured feedback data and the need to transform it into useful insights for school improvement. Using models like BERT, Naive Bayes, and SVM is a practical choice, as each provides unique advantages for analyzing sentiment.
 
 
 
-                            The objectives are aligned with the goal of providing practical insights, and the methodology covers key steps from data collection to model training. However, the proposal could benefit from simpler language in some sections and perhaps more specific examples of expected outcomes. Overall, this project shows a good approach to applying sentiment analysis in education and could genuinely help schools understand and act on student feedback.</p>
-                        <span class="text-sm text-gray-500">Date: Nov 1 at 5:01pm</span>
+                                The objectives are aligned with the goal of providing practical insights, and the methodology covers key steps from data collection to model training. However, the proposal could benefit from simpler language in some sections and perhaps more specific examples of expected outcomes. Overall, this project shows a good approach to applying sentiment analysis in education and could genuinely help schools understand and act on student feedback.</p>
+                            <span class="text-sm text-gray-500">Date:  Nov 1 at 5:01pm</span>
+                        </div>
+                        <!-- ... Repeat for other comments ... -->
                     </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <p class="text-gray-600 mb-2">It is noticeable that there are weaknesses that the SYNNER Project Proposal is showing based on their IEEE report, which complicates its feasibility and comprehension: One significant flaw is no Gantt chart, or semblance of one in the form of a pipeline which hinders in tracking back the project timeline and realization of how tasks will be achieved and when. This paper also lacks a comprehensive elaboration of the sentiment analysis models or model architecture which brings out issues on the planned method for analyzing the feedback. Unfortunately, there are no specific models mentioned and architectures make it very hard to determine the appropriateness of the chosen techniques on educational feedback data.
+                    <div class="space-y-6">
+                        <!-- Comment sections - repeat for each comment -->
+                        <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                            <p class="text-gray-300 mb-4">
+                                
+                                It is noticeable that there are weaknesses that the SYNNER Project Proposal is showing based on their IEEE report, which complicates its feasibility and comprehension: One significant flaw is no Gantt chart, or semblance of one in the form of a pipeline which hinders in tracking back the project timeline and realization of how tasks will be achieved and when. This paper also lacks a comprehensive elaboration of the sentiment analysis models or model architecture which brings out issues on the planned method for analyzing the feedback. Unfortunately, there are no specific models mentioned and architectures make it very hard to determine the appropriateness of the chosen techniques on educational feedback data.
 
 
 
                             Also, the proposal lacks important points of concern as regards text preprocessing. It has left out how the unstructured feedback will be standardized and the kind of control that will be put in place to deal with challenges such as slang, and spelling, and colloquial language. Additionally, the proposal does not envision multiple-language feedback, which would be highly problematic since analysis would be accompanied by language detection and translation preprocessing steps. These oversights might mean that the problem is not sufficiently deep to deal with the issues of realistic sentiment analysis, and more detailed preparation of approaches to these problems is necessary. All in all, it gives a rather vague and incomplete impression of the proposal and its links to the actual ways of applying NLP to analyze educational feedback.</p>
-                        <span class="text-sm text-gray-500">Date: Nov 2 at 11:56pm</span>
+                            <span class="text-sm text-gray-500">Date:  Nov 2 at 11:56pm</span>
+                        </div>
+                        <!-- ... Repeat for other comments ... -->
                     </div>
+                </div>
+            </div>
+
+
+            <!-- Activity Navigation -->
+            <div class="bg-gray-900/80 backdrop-blur-md rounded-xl p-6" data-aos="fade-up">
+                <div class="flex justify-between items-center">
+
+                        <!-- Invisible placeholder to maintain spacing -->
+                        <a href="Exercise5.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0]">
+                            Previous Activity
+                            <i class="fas fa-arrow-left ml-2"></i>
+                        </a>
+ 
+
+                    <!-- Current Activity Indicator -->
+                    <span class="text-[#00F5A0]">P-M1</span>
+
+                    <!-- Next Activity -->
+                    <a href="P-M1Revised.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Next Activity
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
 </body>
 </html>

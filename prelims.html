@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prelims - Sean Ticzon</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            padding: 0.75rem 1rem;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: max-content;
+            max-width: 250px;
+            z-index: 50;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(17, 24, 39, 0.95) transparent transparent transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tooltip.left {
+            left: 0;
+            transform: translateX(0) translateY(10px);
+        }
+
+        .tooltip.right {
+            left: auto;
+            right: 0;
+            transform: translateX(0) translateY(10px);
+        }
+
+        .tooltip.left::before {
+            left: 20%;
+        }
+
+        .tooltip.right::before {
+            left: 80%;
+        }
+
+        .tag-item {
+            position: relative;
+            cursor: help;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .tag-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tag-item:hover .tooltip.left {
+            transform: translateX(0) translateY(0);
+        }
+
+        .tag-item:hover .tooltip.right {
+            transform: translateX(0) translateY(0);
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #00F5A0;
+            font-size: 0.8rem;
+            letter-spacing: 0.025em;
+        }
+
+        .tooltip-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <div class="flex gap-4">
+                    <a href="#reflection" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Reflection
+                    </a>
+                    <a href="#activities" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Activities
+                    </a>
+                    <a href="index.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Term Overview -->
+    <section class="pt-32 pb-20" id="reflection">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient" data-aos="fade-up">Prelims Journey</h1>
+            <div class="glass-card p-8 rounded-xl mb-12" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="text-2xl font-semibold mb-6">Term Reflection</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        One of the more Interesting topics we learned about was <span class="accent-gradient font-semibold">Artificial Intelligence</span> and its functions during our first term. Artificial Intelligence is involved with our daily lives and lets machines perform tasks that have human capabilities. They can solve difficult problems or can do reasoning, learn from experience through training, and lend a hand in creative functions. For me, artificial intelligence has greatly helped coding, especially debugging. Getting errors from long blocks of code can be frustrating and time-consuming as well, but with AI one can debug much faster by identifying the problems that can save one's time and efforts.
+                    </p>
+                    
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        AI has many important branches, one of which is <span class="accent-gradient font-semibold">Machine Learning (ML)</span>. It is concerned with giving the computer the ability to perform tasks without explicit programming. Another branch is <span class="accent-gradient font-semibold">Deep Learning</span>, which is based on neural networks in processing data and finding patterns.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed text-justify">We covered the various forms of Machine Learning in our class:</p>
+                    
+                    <ul class="list-disc list-inside mb-6">
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Supervised Learning</span>: Uses labeled training data for prediction, like email filtering ("spam"/"ham") or sentiment analysis.</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Unsupervised Learning</span>: Works with unlabeled data by finding patterns or clustering in data.</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Reinforcement Learning</span>: Improves through rewards and penalties based on actions taken.</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        Mostly in Machine Learning it has a few steps it follows. It reads and analyzes the pattern in the features of the data, maps that into labels, and can look at the new data and recognize the pattern. The patterns are stored in the <span class="accent-gradient font-semibold">model</span>, allowing it to make predictions based on learning.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        Then, we learned <span class="accent-gradient font-semibold">NLP Text Preprocessing</span>. <span class="accent-gradient font-semibold">NLP</span> or <span class="accent-gradient font-semibold">Natural Language Processing</span> is part of Artificial Intelligence mainly used for the understanding and processing of human language. "Text" refers to any message or information that is written or printed- such as books, comments, emails, or news articles.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed text-justify">Preprocessing includes multiple important phases:</p>
+                    
+                    <ul class="list-disc list-inside mb-6">
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Lowercasing</span>: Converting all characters to lower cases</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Special Character Removal</span>: Removing punctuation marks, symbols, and numbers</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Stopword Removal</span>: Eliminating common words with minor meaning</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Tokenization</span>: Breaking text into smaller portions (tokens)</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-300 leading-relaxed text-justify">Key Terms in NLP Text Representation:</p>
+                    
+                    <ul class="list-disc list-inside mb-6">
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Corpus</span>: Collection of text data or records</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Vocabulary</span>: Unique words within the corpus</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Document</span>: Individual text record within the corpus</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Word</span>: Single unit found in the vocabulary</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-300 leading-relaxed text-justify">Text Representation Methods:</p>
+                    
+                    <ul class="list-disc list-inside">
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">One-Hot Encoding</span>: Creates unique vectors with one "1" element</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Bag of Words (BoW)</span>: Calculates word occurrences</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Term Frequency-Inverse Document Frequency</span>: Weights words based on occurrence patterns</span>
+                        </li>
+                        <li class="text-gray-300 text-justify flex">
+                            <span class="mt-1 mr-2">•</span>
+                            <span><span class="accent-gradient font-semibold">Word Embeddings</span>: Maps words to dense vectors capturing semantic relationships</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-300 leading-relaxed mt-6 text-justify">
+                        Learning about <span class="accent-gradient font-semibold">Artificial Intelligence</span> and <span class="accent-gradient font-semibold">Natural Language Processing</span> has really been a step up for me in understanding how machines interpret human language. Concepts such as <span class="accent-gradient font-semibold">text preprocessing</span>, <span class="accent-gradient font-semibold">text representation</span>, and <span class="accent-gradient font-semibold">NLP techniques</span> have made it possible for me to not only gain theoretical knowledge but also actual skills on the transformation of text into a machine-readable format. The coding and debugging skills are already enhanced mainly with regard to optimizing time-consuming tasks.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mt-6 text-justify">
+                        This experience enables me to keep developing and learn about AI, to develop applications for easier and more efficient use in everyday work. In the short term, It gave me a drive to learn deeper into knowledge about <span class="accent-gradient font-semibold">machine learning models</span> and work hands-on experience through <span class="accent-gradient font-semibold">NLP projects</span>. Setting such goals motivates me to keep expanding myself in the aspects of how AI can impact fields from language processing to creative problem-solving.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works and Activities -->
+    <section class="py-20 bg-gray-800" id="activities">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 accent-gradient" data-aos="fade-up">Works and Activities</h2>
+            
+            <!-- Updated Activity Cards with correct links -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Exercise 2 - NLP Text PreProcessing -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/font.png" alt="NLP Text PreProcessing" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="PrelimsExercise2.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise 2: NLP Text PreProcessing</h3>
+                        <p class="text-gray-400 mb-6">Implementation of Natural Language Processing techniques for text preprocessing, including tokenization, stemming, and lemmatization.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                NLP
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Natural Language Processing</div>
+                                    <div class="tooltip-content">Technology that enables computers to understand and process human language in a meaningful way.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Text Preprocessing
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Text Preprocessing</div>
+                                    <div class="tooltip-content">Initial cleaning and preparation of raw text data for NLP tasks and analysis.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Lowercasing
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Lowercasing</div>
+                                    <div class="tooltip-content">Converting all text to lowercase to ensure consistency in text analysis.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Special Character Removal
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Special Character Removal</div>
+                                    <div class="tooltip-content">Eliminating punctuation marks, symbols, and other non-alphanumeric characters from text.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Stopword Removal
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Stopword Removal</div>
+                                    <div class="tooltip-content">Removing common words (like 'the', 'is', 'at') that don't carry significant meaning.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Tokenization
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Tokenization</div>
+                                    <div class="tooltip-content">Breaking down text into smaller units like words, sentences, or subwords.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="PrelimsExercise2.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Activity 3.1 Implementing Text Representation -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/textrep.png" alt="Text Representation" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="PrelimsActivity3.1.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Activity 3.1: Text Representation</h3>
+                        <p class="text-gray-400 mb-6">Implementation of various text representation techniques including Bag of Words, TF-IDF, and Word Embeddings.</p>
+                        <!-- First set of tags -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Text Representation
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Text Representation</div>
+                                    <div class="tooltip-content">Methods of converting text data into numerical formats that machines can process.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                NLP
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Natural Language Processing</div>
+                                    <div class="tooltip-content">Technology enabling computers to understand and process human language.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Dictionary Lookup
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Dictionary Lookup</div>
+                                    <div class="tooltip-content">Method of mapping words to their corresponding numerical indices in a vocabulary.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                One-Hot Encoding
+                                <div class="tooltip">
+                                    <div class="tooltip-title">One-Hot Encoding</div>
+                                    <div class="tooltip-content">Representing words as binary vectors with a single '1' and all other positions as '0'.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Bag-of-Words
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Bag-of-Words</div>
+                                    <div class="tooltip-content">Text representation method that counts word frequencies while ignoring word order.</div>
+                                </div>
+                            </span>
+
+                             <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                TF-IDF
+                                <div class="tooltip">
+                                    <div class="tooltip-title">TF-IDF</div>
+                                    <div class="tooltip-content">Term Frequency-Inverse Document Frequency: Measures word importance in documents.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="PrelimsActivity3.1.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Prelim Asynchronous Activity -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/perseverance.png" alt="Asynchronous Activity" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="PrelimAsynchronous.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Prelim Asynchronous Activity</h3>
+                        <p class="text-gray-400 mb-6">Independent learning activity focusing on advanced NLP concepts and their practical applications.</p>
+                        <!-- Second set of tags -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                NLP
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Natural Language Processing</div>
+                                    <div class="tooltip-content">Technology enabling computers to understand and process human language.</div>
+                                </div>
+                            </span>
+
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Challenges
+                                <div class="tooltip">
+                                    <div class="tooltip-title">NLP Challenges</div>
+                                    <div class="tooltip-content">Complex problems and obstacles faced when processing natural language with computers.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="PrelimAsynchronous.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Prelim Exam -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/exam1.png" alt="Prelim Exam" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="PrelimExam.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Prelim Examination</h3>
+                        <p class="text-gray-400 mb-6">Comprehensive assessment covering text preprocessing, representation, and fundamental NLP concepts.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Exam
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Examination</div>
+                                    <div class="tooltip-content">Assessment of knowledge and understanding of NLP concepts and techniques.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="PrelimExam.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <p>© 2024 Sean Repti Miguel L. Ticzon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+    <script>
+        function adjustTooltipPositions() {
+            const tooltips = document.querySelectorAll('.tooltip');
+            
+            tooltips.forEach(tooltip => {
+                const rect = tooltip.getBoundingClientRect();
+                const parentRect = tooltip.closest('.glass-card').getBoundingClientRect();
+                const tag = tooltip.closest('.tag-item');
+                const tagRect = tag.getBoundingClientRect();
+                
+                tooltip.classList.remove('left', 'right');
+                
+                const spaceToRight = parentRect.right - tagRect.right;
+                const spaceToLeft = tagRect.left - parentRect.left;
+                
+                if (spaceToRight < 100 && spaceToLeft > spaceToRight) {
+                    tooltip.classList.add('right');
+                } else if (spaceToLeft < 100 && spaceToRight > spaceToLeft) {
+                    tooltip.classList.add('left');
+                }
+                
+                const tooltipRect = tooltip.getBoundingClientRect();
+                if (tooltipRect.left < parentRect.left) {
+                    tooltip.classList.add('left');
+                } else if (tooltipRect.right > parentRect.right) {
+                    tooltip.classList.add('right');
+                }
+            });
+        }
+
+        const debouncedAdjust = debounce(adjustTooltipPositions, 100);
+        window.addEventListener('load', adjustTooltipPositions);
+        window.addEventListener('resize', debouncedAdjust);
+
+        document.querySelectorAll('.tag-item').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                requestAnimationFrame(adjustTooltipPositions);
+            });
+        });
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+    </script>
+</body>
+</html>

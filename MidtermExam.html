@@ -58,8 +58,8 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
-                <a href="prelims.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
-                    Back to Prelims
+                <a href="midterms.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    Back to Midterms
                 </a>
             </div>
         </div>
@@ -70,12 +70,12 @@
         <div class="container mx-auto px-6">
             <!-- Header and Grade Section -->
             <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
-                <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient">Prelim Examination</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient">Midterm Examination</h1>
                 <div class="flex items-center space-x-4">
                     <div class="glass-card p-6 rounded-xl border border-[#00F5A0]/20">
                         <span class="text-sm text-gray-400 block mb-2">Grade Achieved</span>
                         <div class="flex items-baseline space-x-1">
-                            <span class="text-4xl font-bold text-[#00F5A0]">55</span>
+                            <span class="text-4xl font-bold text-[#00F5A0]">N/A</span>
                             <span class="text-gray-400">/</span>
                             <span class="text-gray-400">60</span>
                         </div>
@@ -113,40 +113,18 @@
                         <!-- Questions Section -->
                         <div class="lg:w-1/2">
                             <h4 class="text-xl font-semibold mb-4 text-[#00F5A0]">Questions</h4>
-                            <div class="relative h-[750px] overflow-hidden rounded-xl">
-                                <img src="Exams/Prelims/Questions.png" 
-                                     class="w-full h-full object-contain cursor-pointer"
-                                     alt="Exam Questions"
-                                     @click="showModal = true; modalImage = 'Exams/Prelims/Questions.png'">
+                            <div class="relative h-[750px] overflow-hidden rounded-xl bg-gray-800 flex items-center justify-center">
+                                <img src="Exams/Midterms/questions.png" alt="Exam Questions" class="w-full h-full object-contain cursor-pointer">
                             </div>
                         </div>
 
                         <!-- Answers Section -->
                         <div class="lg:w-1/2">
-                            <h4 class="text-xl font-semibold mb-4 text-[#00F5A0]">My Exam</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-[#00F5A0]">My Solutions</h4>
                             <div x-data="{ activeSlide: 0 }" class="relative">
-                                <!-- Images -->
-                                <div class="relative h-[750px] overflow-hidden rounded-xl">
-                                    <template x-for="(slide, index) in [
-                                        'Exams/Prelims/1st.png',
-                                        'Exams/Prelims/2nd.png',
-                                        'Exams/Prelims/3rd.png',
-                                        'Exams/Prelims/4th.png'
-                                    ]">
-                                        <div x-show="activeSlide === index"
-                                             x-transition:enter="transition ease-out duration-300"
-                                             x-transition:enter-start="opacity-0 transform scale-90"
-                                             x-transition:enter-end="opacity-100 transform scale-100"
-                                             x-transition:leave="transition ease-in duration-300"
-                                             x-transition:leave-start="opacity-100 transform scale-100"
-                                             x-transition:leave-end="opacity-0 transform scale-90"
-                                             class="absolute inset-0">
-                                            <img :src="slide" 
-                                                 class="w-full h-full object-contain cursor-pointer"
-                                                 :alt="'Exam Solution ' + (index + 1)"
-                                                 @click="showModal = true; modalImage = slide">
-                                        </div>
-                                    </template>
+                                <!-- Empty Placeholder -->
+                                <div class="relative h-[750px] overflow-hidden rounded-xl bg-gray-800 flex items-center justify-center">
+                                    <p class="text-gray-400">Solutions will be displayed here</p>
                                 </div>
 
                                 <!-- Navigation Buttons -->
@@ -178,55 +156,8 @@
             <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold mb-6 accent-gradient">Personal Reflection</h2>
                 <div class="prose max-w-none text-gray-300">
-                    <p class="mb-4 text-justify">
-                        I got <span class="accent-gradient font-semibold">Set A</span>, and the instructions were new to me. For example, in <span class="accent-gradient font-semibold">Test I</span> of Set A, we were only allowed <span class="accent-gradient font-semibold">20 words</span> to explain NLP as it relates to Machine Learning.
-                    </p>
-                    <p class="mb-4 text-justify">
-                        This made it challenging to choose words carefully and count each one to stay within the 20-word limit. Making it both <span class="accent-gradient font-semibold">detailed and concise</span> in only 20 words really made me think about how to explain this in a short and clear way.
-                    </p>
-                    <p class="mb-4 text-justify">
-                        The same applied to <span class="accent-gradient font-semibold">Test II</span>, but the limit there was <span class="accent-gradient font-semibold">two sentences</span>. This gave me a little more room to use additional words to explain the relationships between the following:
-                    </p>
-                    <ul class="list-disc pl-6 mb-4 space-y-2">
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span class="accent-gradient font-semibold">Target values vs. Feature values</span>
-                        </li>
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span class="accent-gradient font-semibold">Web scraping vs. API</span>
-                        </li>
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span class="accent-gradient font-semibold">Bag-of-Words vs. Corpora</span>
-                        </li>
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span class="accent-gradient font-semibold">Text Classification vs. Sentiment Analysis</span>
-                        </li>
-                    </ul>
-                    <p class="mb-4 text-justify">
-                        Lastly, in <span class="accent-gradient font-semibold">Test III</span>, we needed to answer the following questions:
-                    </p>
-                    <ul class="list-disc pl-6 mb-4 space-y-2">
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span>Explain how <span class="accent-gradient font-semibold">Named Entity Recognition</span> addresses a real-world problem.</span>
-                        </li>
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span>Describe the challenges that <span class="accent-gradient font-semibold">NER</span> helps solve.</span>
-                        </li>
-                        <li class="text-gray-300 text-justify flex">
-                            <span class="mt-1 mr-2">•</span>
-                            <span>Identify the stakeholders and the benefits they gain from implementing <span class="accent-gradient font-semibold">NER</span>.</span>
-                        </li>
-                    </ul>
-                    <p class="mb-4 text-justify">
-                        For Test III, I had the <span class="accent-gradient font-semibold">freedom to add more details</span> in answering these questions.
-                    </p>
-                    <p class="mb-4 text-justify">
-                        Overall, this was a <span class="accent-gradient font-semibold">challenging exam</span>. Even though the instructions were easy to understand, I had to carefully select words to make my answers as concise as possible. This was a <span class="accent-gradient font-semibold">new experience</span> for me, and I enjoyed taking the exam. I am also <span class="accent-gradient font-semibold">proud of my results</span>.
+                    <p class="mb-4">
+                        Coming Soon
                     </p>
                 </div>
             </div>
@@ -236,18 +167,18 @@
             <div class="bg-gray-900/80 backdrop-blur-md rounded-xl p-6" data-aos="fade-up">
                 <div class="flex justify-between items-center">
                     <!-- Previous Activity -->
-                    <a href="PrelimAsynchronous.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    <a href="P-M1Revised.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
                         <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition-transform duration-300"></i>
                         Previous Activity
                     </a>
 
                     <!-- Current Activity Indicator -->
-                    <span class="hidden md:block text-[#00F5A0]">Prelim Examination</span>
+                    <span class="hidden md:block text-[#00F5A0]">Midterm Examination</span>
 
                     <!-- Next Activity -->
                     <div class="flex justify-between items-center">
                         <!-- Invisible placeholder to maintain spacing -->
-                        <a href="PrelimsExercise2.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0]">
+                        <a href="ExerciseM1.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0]">
                             Next Activity
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
