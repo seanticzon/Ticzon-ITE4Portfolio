@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise F1 - Building Chatbots</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <a href="finals.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    Back to Finals
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <!-- Header and Grade Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient">Exercise F1: Building Chatbots</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="glass-card p-6 rounded-xl border border-[#00F5A0]/20">
+                        <span class="text-sm text-gray-400 block mb-2">Grade Achieved</span>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-4xl font-bold text-[#00F5A0]">--</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Viewers -->
+            <div class="grid grid-cols-1 gap-8 mb-8">
+                <!-- Documentation File -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Exercise Documentation</h3>
+                        <div class="mb-6">
+                            <iframe 
+                                src="https://docs.google.com/document/d/1pJWOyArCT0DK0qpIUWwyxMnztDOVtUW0/preview" 
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
+                                title="Documentation Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-300 mb-6">Detailed documentation for the chatbot development exercise including requirements and implementation details.</p>
+                        <a href="https://docs.google.com/document/d/1pJWOyArCT0DK0qpIUWwyxMnztDOVtUW0/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                           target="_blank">
+                            View Document
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dataset File -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Exercise Dataset</h3>
+                        <div class="mb-6">
+                            <iframe 
+                                src="https://docs.google.com/spreadsheets/d/1Q7O3T1db2vt3TZsRYCtpTsoUEZkMdNXy/preview" 
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
+                                title="Dataset Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-300 mb-6">Training dataset used for developing and testing the chatbot models.</p>
+                        <a href="https://docs.google.com/spreadsheets/d/1Q7O3T1db2vt3TZsRYCtpTsoUEZkMdNXy/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                           target="_blank">
+                            View Dataset
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Jupyter Notebook -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Jupyter Notebook</h3>
+                        <div class="mb-6">
+                            <img 
+                                src="Finals/ExerciseF1.png" 
+                                alt="Notebook Preview"
+                                class="w-full rounded-xl shadow-lg">
+                        </div>
+                        <p class="text-gray-300 mb-6">Implementation of chatbot models using advanced NLP techniques and frameworks.</p>
+                        <a href="https://drive.google.com/file/d/1I_jVbUens7a07TtYnr-9AcRujkPv6Ivt/view?usp=drive_link" 
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                           target="_blank">
+                            View Notebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reflection Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-300">
+                    <p class="mb-4 text-justify">
+                        I had fun creating this activity from formulating questions and looking for different models. It surprise me that every model answers differently and some of the answer are far from the questions context. This activity helped me on how you can use pre-trained models from hugging face, it requires special access tokens in order to use a specific model. The answers of the models are good when they have many parameters for example 1 model in my work the Qwen/Qwen2.5-72B-Instruct it answered the question with high satisfaction and quality
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Peer Review</h2>
+                <div class="space-y-6">
+                    <!-- Comment 1 -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">The approach of this project so effectively combines theory and practice in an evaluation of six text-generation models from Hugging Face: it is well-structured, capturing a comprehensive analysis of each model's performance on factual, abstract, and conversational questions. The methodology is clear and so well-defined evaluation metrics like "Satisfactory" and "Response Quality," which allow one to compare systematically. The Jupyter notebook applies all these models through the use of Hugging Face tools, manifesting technological ability to apply NLP concepts in a real-life setting. The quantitative data organized in an Excel sheet supports the documentation. The application is more natural by looking at the strengths and weaknesses of each model. The size of models such as Qwen/Qwen2.5-72B-Instruct and NousResearch/Hermes-3-Llama-3.1-8B illustrate that it can take on various queries, while smaller models like openai-community/gpt2 show the limitations by parameters. Full discussion of the findings and recognition of the limitations of a model indicate an understanding of the field's complexity.
+
+                            While the project succeeds in the key aspects, improvements can still be added to most parts. The Word document writing does not easily escape grammatical mistakes and awkward wording that interpret it less readable. Some sections here are too simple, which could get broken up into paragraphs or aided with visuals for clarity purposes. In the Jupyter notebook, explanations to certain blocks of code are a little limited, making it harder for non-technical readers to follow. Adding detailed comments or markdown explanations would improve comprehension. In the Excel file, the inclusion of more natural visualizations—such as bar charts comparing performance metrics—would make the data easier to understand. Discrepancies between the text analysis and Excel data (e.g., inconsistent scores) should be resolved to maintain credibility. Lastly, although this project more than shows that larger models have advantages in most points, it could explore more on practical understanding in computationally expensive costs and deployment difficulty, for example, for a better perspective.</p>  
+                        <span class="text-sm text-gray-500">Date: Nov 23 at 8:52am</span>
+                    </div>
+                    <!-- Comment 2 -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">This research about "The Evaluation and Testing of Text
+
+                            Generation Models from Hugging Face" The structured comparison of model performance across factual, abstract, and conversational queries is where the Hugging Face text generating models evaluation shines. The models' advantages and disadvantages can be better understood with a clear result presentation that includes thorough evaluation of answer quality and satisfaction. Hugging Face's contributions and scholarly advice support credibility.
+                            
+                            More information regarding the experimental setting, including model selection criteria and question kinds, is needed in the methods section. The study would be more thorough if the implications of the findings for text generation development were examined in greater detail and ethical and bias concerns were taken into account. Even if it is clear and comprehensive, addressing these issues would greatly increase its influence on NLP research.</p>
+                        <span class="text-sm text-gray-500">Date: Dec 7 at 12:40pm</span>
+                    </div>
+                    <!-- Comment 3 -->
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4"></p>
+                        <span class="text-sm text-gray-500">Date:   </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Navigation -->
+            <div class="bg-gray-900/80 backdrop-blur-md rounded-xl p-6" data-aos="fade-up">
+                <div class="flex justify-between items-center">
+                    <div class="invisible">
+                        <!-- Invisible placeholder to maintain spacing -->
+                        <a href="#" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0]">
+                            Previous Activity
+                            <i class="fas fa-arrow-left ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Current Activity Indicator -->
+                    <span class="text-[#00F5A0]">Exercise F1</span>
+
+                    <!-- Next Activity -->
+                    <a href="ExerciseF2.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Next Activity
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

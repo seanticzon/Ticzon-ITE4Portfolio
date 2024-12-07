@@ -38,6 +38,105 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+
+        .code-block {
+            background: rgba(0, 245, 160, 0.1);
+            border-left: 3px solid #00F5A0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+
+        .tag-item {
+            position: relative;
+            cursor: help;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .tag-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tag-item:hover .tooltip.left {
+            transform: translateX(0) translateY(0);
+        }
+
+        .tag-item:hover .tooltip.right {
+            transform: translateX(0) translateY(0);
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            padding: 0.75rem 1rem;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
+            color: white;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: max-content;
+            max-width: 250px;
+            z-index: 50;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(17, 24, 39, 0.95) transparent transparent transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tooltip.left {
+            left: 0;
+            transform: translateX(0) translateY(10px);
+        }
+
+        .tooltip.right {
+            left: auto;
+            right: 0;
+            transform: translateX(0) translateY(10px);
+        }
+
+        .tooltip.left::before {
+            left: 20%;
+        }
+
+        .tooltip.right::before {
+            left: 80%;
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #00F5A0;
+            font-size: 0.8rem;
+            letter-spacing: 0.025em;
+        }
+
+        .tooltip-content {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+            font-weight: 400;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -46,22 +145,42 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
-                <a href="index.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
-                    Back to Portfolio
-                </a>
+                <div class="flex gap-4">
+                    <a href="#reflection" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Reflection
+                    </a>
+                    <a href="#activities" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Activities
+                    </a>
+                    <a href="index.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Home
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section with Term Overview -->
-    <section class="pt-32 pb-20">
+    <section class="pt-32 pb-20" id="reflection">
         <div class="container mx-auto px-6">
             <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient" data-aos="fade-up">Finals Journey</h1>
             <div class="glass-card p-8 rounded-xl mb-12" data-aos="fade-up" data-aos-delay="100">
                 <h2 class="text-2xl font-semibold mb-6">Term Reflection</h2>
                 <div class="prose prose-invert max-w-none">
-                    <p class="text-gray-300 leading-relaxed mb-6">
-                        Coming soon... The finals journey reflection will be updated as we progress through the term.
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        For our finalterm, the first thing we learned about was <span class="accent-gradient font-semibold">AI assistants</span> and <span class="accent-gradient font-semibold">chatbots</span>. A chatbot is a system or program designed to mimic or to simulate human conversation with users. Typically they are powered by advanced <span class="accent-gradient font-semibold">NLP models</span> like <span class="accent-gradient font-semibold">Text Generation Models</span> and other <span class="accent-gradient font-semibold">Large Language Models (LLMs)</span>. These models are advanced and they are capable of understanding and interpreting human language in order to provide answers. Chatbots are widely used in various domains, assisting users with frequently asked questions or any other questions that is related to their specific fields.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        One example of a Large Language Model that is popular today is <span class="accent-gradient font-semibold">GPT</span>, which stands for <span class="accent-gradient font-semibold">Generative Pre-trained Transformer</span>. Developed by <span class="accent-gradient font-semibold">OpenAI</span>, an AI research and deployment company focused on benefiting humans through artificial intelligence, GPT is capable of generating human like conversations and performing different tasks like summarization and translation. GPT provides answers using a probabilistic approach, which does not guarantee correct responses and this phenomenon is called <span class="accent-gradient font-semibold">hallucination</span>.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        We also learned how to <span class="accent-gradient font-semibold">fine-tune</span> a pre-trained model. Fine-tuning involves taking a pre-trained model and training it on a smaller scale or for a specific task to improve its performance in that field or domain.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                        The difference between a <span class="accent-gradient font-semibold">pre-trained model</span> and a <span class="accent-gradient font-semibold">fine-tuned model</span> is that the pre-trained model serves as the basic and fundamental structure trained on large datasets. Then in the fine-tuned model, it is an optimized version designed for a specific task. Typically, task-specific data is fed into the pre-trained model to optimize its performance for that task. Fine-tuning is done to enhance performance in a particular area or domain.
                     </p>
                 </div>
             </div>
@@ -69,17 +188,233 @@
     </section>
 
     <!-- Works and Activities -->
-    <section class="py-20 bg-gray-800">
+    <section class="py-20 bg-gray-800" id="activities">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 accent-gradient" data-aos="fade-up">Works and Activities</h2>
             
-            <!-- Placeholder for upcoming activities -->
-            <div class="glass-card rounded-xl p-8 text-center" data-aos="fade-up">
-                <i class="fas fa-clock text-4xl text-[#00F5A0] mb-4"></i>
-                <h3 class="text-xl font-semibold mb-4">Activities Coming Soon</h3>
-                <p class="text-gray-400">
-                    The finals activities and projects will be added here as they are completed throughout the term.
-                </p>
+            <!-- Activity Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Exercise F1 - Building Chatbots - Implementing NLP Application Models -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/technology.png" alt="NLP Models" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="ExerciseF1.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise F1 - Building Chatbots</h3>
+                        <p class="text-gray-400 mb-6">Implementation of a chatbot using a pre-trained model.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Hugging Face
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Hugging Face</div>
+                                    <div class="tooltip-content">Platform providing state-of-the-art NLP models and tools for model development and deployment.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                GPT
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Generative Pre-trained Transformer</div>
+                                    <div class="tooltip-content">Advanced language model capable of generating human-like text and understanding context.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Text Generation
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Text Generation</div>
+                                    <div class="tooltip-content">AI capability to create human-like text based on input prompts or context.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="ExerciseF1.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exercise M1.1 - Evaluating NLP Model Performance -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/work-force.png" alt="Model Evaluation" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="ExerciseF2.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise F2 - Colloborative Literature Review</h3>
+                        <p class="text-gray-400 mb-6">Collaborative literature review on the topic of the Project.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                RRL
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Review of Related Literature</div>
+                                    <div class="tooltip-content">Comprehensive analysis of existing research and publications related to the study.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                IEEE
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Institute of Electrical and Electronics Engineers</div>
+                                    <div class="tooltip-content">Professional organization setting standards for technical publications and research.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Reference
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Academic References</div>
+                                    <div class="tooltip-content">Citations and sources used to support research findings and methodologies.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="ExerciseF2.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 - BERT-based QnA System -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/compliance.png" alt="BERT QnA System" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="Exercise9.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Exercise 9 - Research Methodology</h3>
+                        <p class="text-gray-400 mb-6">A collaborative work focus on the Methodology.</p>
+                        <br>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                    IEEE
+                                    <div class="tooltip">
+                                        <div class="tooltip-title">Institute of Electrical and Electronics Engineers</div>
+                                        <div class="tooltip-content">Professional organization setting standards for technical publications and research documentation.</div>
+                                    </div>
+                                </span>
+                                <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                    Methodology
+                                    <div class="tooltip">
+                                        <div class="tooltip-title">Research Methodology</div>
+                                        <div class="tooltip-content">Systematic approach and procedures used to conduct research and achieve study objectives.</div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <a href="Exercise9.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <!-- P-M1 Project Proposal Presentation -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/presentation.png" alt="Project Proposal" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="FinalProject.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Final Project</h3>
+                        <p class="text-gray-400 mb-6">Presentation of the project proposal outlining objectives, methodology, and expected outcomes.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Project
+                                <div class="tooltip">
+                                    <div class="tooltip-title">SYNNER Project</div>
+                                    <div class="tooltip-content">Synthetic data generation system using advanced language models.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                IEEE
+                                <div class="tooltip">
+                                    <div class="tooltip-title">IEEE Format</div>
+                                    <div class="tooltip-content">Standard format for technical documentation and research papers.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Models
+                                <div class="tooltip">
+                                    <div class="tooltip-title">AI Models</div>
+                                    <div class="tooltip-content">Language models used for text generation and processing.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Fine Tuning
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Model Fine-Tuning</div>
+                                    <div class="tooltip-content">Process of adapting pre-trained models for specific tasks.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Training
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Model Training</div>
+                                    <div class="tooltip-content">Process of teaching AI models using specific datasets.</div>
+                                </div>
+                            </span>
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Testing
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Model Testing</div>
+                                    <div class="tooltip-content">Evaluation of model performance and accuracy.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="FinalsProject.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden group h-48">
+                        <img src="images/exam1.png" alt="Midterm Exam" class="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4">
+                                <a href="FinalProject.html" class="text-white hover:text-[#00F5A0] transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Activity
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Finals Examination</h3>
+                        <p class="text-gray-400 mb-6">Comprehensive assessment covering NLP application models, performance evaluation, and project proposal development.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tag-item px-3 py-1 bg-gray-700 rounded-full text-sm hover:bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] hover:text-gray-900 transition-all duration-300">
+                                Exam
+                                <div class="tooltip">
+                                    <div class="tooltip-title">Examination</div>
+                                    <div class="tooltip-content">Comprehensive assessment of NLP concepts, models, and applications.</div>
+                                </div>
+                            </span>
+                        </div>
+                        <a href="FinalsExam.html" class="inline-block w-full text-center py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] rounded-lg text-gray-900 font-semibold hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-[#00F5A0]/20">
+                            View Activity
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -97,6 +432,58 @@
         AOS.init({
             duration: 1000,
             once: true
+        });
+    </script>
+    <script>
+        function adjustTooltipPositions() {
+            const tooltips = document.querySelectorAll('.tooltip');
+            
+            tooltips.forEach(tooltip => {
+                const rect = tooltip.getBoundingClientRect();
+                const parentRect = tooltip.closest('.glass-card').getBoundingClientRect();
+                const tag = tooltip.closest('.tag-item');
+                const tagRect = tag.getBoundingClientRect();
+                
+                tooltip.classList.remove('left', 'right');
+                
+                const spaceToRight = parentRect.right - tagRect.right;
+                const spaceToLeft = tagRect.left - parentRect.left;
+                
+                if (spaceToRight < 100 && spaceToLeft > spaceToRight) {
+                    tooltip.classList.add('right');
+                } else if (spaceToLeft < 100 && spaceToRight > spaceToLeft) {
+                    tooltip.classList.add('left');
+                }
+                
+                const tooltipRect = tooltip.getBoundingClientRect();
+                if (tooltipRect.left < parentRect.left) {
+                    tooltip.classList.add('left');
+                } else if (tooltipRect.right > parentRect.right) {
+                    tooltip.classList.add('right');
+                }
+            });
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedAdjust = debounce(adjustTooltipPositions, 100);
+        window.addEventListener('load', adjustTooltipPositions);
+        window.addEventListener('resize', debouncedAdjust);
+
+        document.querySelectorAll('.tag-item').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                requestAnimationFrame(adjustTooltipPositions);
+            });
         });
     </script>
 </body>

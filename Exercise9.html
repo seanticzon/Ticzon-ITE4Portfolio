@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 9 - Final Project Documentation</title>
+    <link rel="icon" type="image/x-icon" href="images/connect.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Same styles as ExerciseF1.html --> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(45deg, #00F5A0, #00D9F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold accent-gradient">E-Portfolio</a>
+                <a href="finals.html" class="px-4 py-2 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                    Back to Finals
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <!-- Header and Grade Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 accent-gradient">Exercise 9 - Research Methodology</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="glass-card p-6 rounded-xl border border-[#00F5A0]/20">
+                        <span class="text-sm text-gray-400 block mb-2">Grade Achieved</span>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-4xl font-bold text-[#00F5A0]">--</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Viewers -->
+            <div class="grid grid-cols-1 gap-8 mb-8">
+                <!-- Documentation File -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Project Documentation</h3>
+                        <div class="mb-6">
+                            <iframe 
+                                src="https://docs.google.com/document/d/196t24YUsqOgqdtt6L2pjWB5GGMgj6I4E/preview" 
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
+                                title="Documentation Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-300 mb-6">Comprehensive documentation of the final project implementation and results.</p>
+                        <a href="https://docs.google.com/document/d/196t24YUsqOgqdtt6L2pjWB5GGMgj6I4E/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                           target="_blank">
+                            View Document
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Presentation File -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift" data-aos="fade-up">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6 accent-gradient">Project Presentation</h3>
+                        <div class="mb-6">
+                            <iframe 
+                                src="https://docs.google.com/presentation/d/1HupRGwedq6ETzfjUJwMD81XadbxGZLdx/preview" 
+                                class="w-full h-[600px] border border-[#00F5A0]/20 rounded-xl"
+                                title="Presentation Viewer">
+                            </iframe>
+                        </div>
+                        <p class="text-gray-300 mb-6">Final project presentation slides showcasing key findings and results.</p>
+                        <a href="https://docs.google.com/presentation/d/1HupRGwedq6ETzfjUJwMD81XadbxGZLdx/edit?usp=drive_link&ouid=104070299093774511275&rtpof=true&sd=true" 
+                           class="inline-block px-6 py-3 bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-gray-900 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+                           target="_blank">
+                            View Presentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reflection Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Personal Reflection</h2>
+                <div class="prose max-w-none text-gray-300">
+                    <p class="mb-4 text-justify">
+                        In the collaborative work with methodology I've been assigned on on the Models, which is the creation of the models that we are going to be using for the final project. This task was challenging to me because I am a beginner in Python and I also research a lot in my part in order to create a good model, The models are Naive Bayes, Support Vector Machines or SVM and BERT.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Instructor Comments Section -->
+            <div class="glass-card rounded-xl p-8 mb-8" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-6 accent-gradient">Instructor Comments</h2>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-[#00F5A0] pl-6 py-2">
+                        <p class="text-gray-300 mb-4">Instructor comments will be added after submission and grading.</p>
+                        <span class="text-sm text-gray-500">Date: Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Navigation -->
+            <div class="bg-gray-900/80 backdrop-blur-md rounded-xl p-6" data-aos="fade-up">
+                <div class="flex justify-between items-center">
+                    <a href="ExerciseF2.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0] hover:bg-[#00F5A0] hover:text-gray-900 transition-all duration-300">
+                        Previous Activity
+                        <i class="fas fa-arrow-left ml-2"></i>
+                    </a>
+
+                    <!-- Current Activity Indicator -->
+                    <span class="text-[#00F5A0]">Exercise 9</span>
+
+                    <!-- Next Activity -->
+                    <div class="flex justify-between items-center">
+                        <a href="FinalsProject.html" class="group flex items-center px-6 py-3 rounded-lg border border-[#00F5A0] text-[#00F5A0]">
+                            Next Activity
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
